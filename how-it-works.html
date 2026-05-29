@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — SheetFix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1a1a1a;
+    --border: #242424;
+    --border-hover: #333;
+    --accent: #00e5a0;
+    --accent-dim: rgba(0,229,160,0.08);
+    --accent-border: rgba(0,229,160,0.22);
+    --text: #ebebeb;
+    --muted: #777;
+    --muted2: #444;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 24px 0;
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #000 !important;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px !important;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+
+  .nav-cta:hover { background: #1fffc0 !important; transform: translateY(-1px); }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+
+  .page-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .page-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .page-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .page-title span { color: var(--accent); }
+
+  .page-intro {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 64px;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Steps ── */
+  .steps-section { margin-bottom: 72px; }
+
+  .step-item {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 0 28px;
+    margin-bottom: 4px;
+    position: relative;
+  }
+
+  .step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-circle {
+    width: 48px;
+    height: 48px;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--accent);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .step-line {
+    width: 1px;
+    flex: 1;
+    background: var(--border);
+    min-height: 40px;
+    margin: 6px 0;
+  }
+
+  .step-item:last-child .step-line { display: none; }
+
+  .step-content {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 28px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+  }
+
+  .step-content:hover { border-color: var(--border-hover); }
+
+  .step-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .step-content p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  .step-content p:last-child { margin-bottom: 0; }
+
+  .step-note {
+    font-size: 13px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 12px;
+  }
+
+  /* ── V1 vs upgrade ── */
+  .tier-section { margin-bottom: 72px; }
+
+  .tier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .tier-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 26px;
+  }
+
+  .tier-card.upgrade {
+    border-color: var(--accent-border);
+    background: var(--accent-dim);
+  }
+
+  .tier-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .tier-card.upgrade .tier-badge {
+    color: var(--accent);
+    background: rgba(0,229,160,0.1);
+    border-color: var(--accent-border);
+  }
+
+  .tier-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: -0.3px;
+  }
+
+  .tier-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tier-list li {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .tier-list li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ── FAQ ── */
+  .faq-section { margin-bottom: 72px; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 22px 0;
+  }
+
+  .faq-item:first-of-type { border-top: 1px solid var(--border); }
+
+  .faq-q {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* ── CTA ── */
+  .cta-block {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 48px 40px;
+    text-align: center;
+  }
+
+  .cta-block h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .cta-block p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 28px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: #1fffc0;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0,229,160,0.25);
+  }
+
+  .cta-note { font-size: 12px; color: var(--muted2); margin-top: 14px; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--muted2);
+    position: relative;
+    z-index: 1;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 600px) {
+    .tier-grid { grid-template-columns: 1fr; }
+    .step-item { grid-template-columns: 48px 1fr; gap: 0 18px; }
+    .cta-block { padding: 32px 22px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sheet<span>Fix</span></a>
+  <ul class="nav-links">
+    <li><a href="how-it-works.html" class="active">How it works</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="get-started.html" class="nav-cta">Get started</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <p class="page-eyebrow">The process</p>
+  <h1 class="page-title">Simple from your end.<br><span>Thorough from ours.</span></h1>
+  <p class="page-intro">You fill in a brief, get a free instant analysis, and we take it from there. No back-and-forth calls, no jargon, no mystery.</p>
+
+  <!-- Steps -->
+  <section class="steps-section">
+    <div class="section-label">Step by step</div>
+
+    <div class="step-item">
+      <div class="step-left">
+        <div class="step-circle">01</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>Fill in the brief</h3>
+        <p>Tell us what your spreadsheet does, what's going wrong, and what you need it to do. The form takes about 5 minutes.</p>
+        <p>Our AI analyses your brief instantly and gives you a plain-language breakdown of what we'd fix and why — before you spend a cent.</p>
+        <div class="step-note">Free · No account needed · Takes ~5 minutes</div>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-left">
+        <div class="step-circle">02</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>Confirm your analysis</h3>
+        <p>Review the AI analysis. If something's off, you can correct it and get an updated version. Once you're happy, confirm — that locks in your brief and sends it through to us.</p>
+        <p>If you're fixing an existing sheet, you'll send us the file by email at this point.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-left">
+        <div class="step-circle">03</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>We build your V1</h3>
+        <p>We build a solid first version — roughly 75% of the full picture. Clean formulas, logical layout, sample data, and a Start Here tab so anyone can use it.</p>
+        <p>This is delivered by email. It's enough to see the direction and decide whether you want to take it further.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-left">
+        <div class="step-circle">04</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3>Upgrade if you want more</h3>
+        <p>Happy with the V1? A paid upgrade unlocks the full build — automation, dashboards, conditional formatting, and branding matched to your business.</p>
+        <p>No pressure. The V1 is a usable, working spreadsheet on its own.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- V1 vs Upgrade -->
+  <section class="tier-section">
+    <div class="section-label">What's included</div>
+    <div class="tier-grid">
+      <div class="tier-card">
+        <span class="tier-badge">V1 — Included</span>
+        <h3>The solid foundation</h3>
+        <ul class="tier-list">
+          <li>Errors and broken formulas fixed</li>
+          <li>Clean, logical structure</li>
+          <li>Sample data so it makes sense</li>
+          <li>Start Here tab with instructions</li>
+          <li>Colour coding that means something</li>
+          <li>Built for the people who use it</li>
+        </ul>
+      </div>
+      <div class="tier-card upgrade">
+        <span class="tier-badge">Upgrade — Paid</span>
+        <h3>The full build</h3>
+        <ul class="tier-list">
+          <li>Full automation and linked formulas</li>
+          <li>Summary dashboards and charts</li>
+          <li>Branding matched to your business</li>
+          <li>Drop-down validation throughout</li>
+          <li>Conditional formatting rules</li>
+          <li>Everything in V1, taken all the way</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="section-label">Common questions</div>
+
+    <div class="faq-item">
+      <div class="faq-q">What software do you work with?</div>
+      <div class="faq-a">Excel and Google Sheets. Both covered. Tell us which one you use in the brief.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do I need to share my actual data?</div>
+      <div class="faq-a">Not always. For fix jobs, we'll need the file — but you can replace sensitive data with dummy values before sending. For builds from scratch, we work from your brief and use sample data to demonstrate the logic.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How long does it take?</div>
+      <div class="faq-a">The free analysis is instant. Turnaround on the V1 depends on complexity, but most straightforward jobs are back with you within a few business days.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What if the V1 isn't quite right?</div>
+      <div class="faq-a">We'll work with you to get it right. The brief process is thorough enough that this is rare — but if something's missed, we'll sort it.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do you do ongoing work?</div>
+      <div class="faq-a">Not yet — but a maintenance subscription is coming. If you've got an ongoing need, get in touch and we'll talk through what makes sense.</div>
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>Ready to get started?</h2>
+    <p>Fill in the brief, get your free analysis, and we'll take it from there.</p>
+    <a href="get-started.html" class="btn-primary">Get my free analysis →</a>
+    <p class="cta-note">Free analysis · No calls · Delivered by email</p>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2025 SheetFix</span>
+  <a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a>
+</footer>
+
+</body>
+</html>

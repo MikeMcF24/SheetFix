@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — SheetFix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1a1a1a;
+    --border: #242424;
+    --border-hover: #333;
+    --accent: #00e5a0;
+    --accent-dim: rgba(0,229,160,0.08);
+    --accent-border: rgba(0,229,160,0.22);
+    --text: #ebebeb;
+    --muted: #777;
+    --muted2: #444;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 24px 0;
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #000 !important;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px !important;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+
+  .nav-cta:hover { background: #1fffc0 !important; transform: translateY(-1px); }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+
+  .page-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .page-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .page-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .page-title span { color: var(--accent); }
+
+  .page-intro {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 64px;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Contact options ── */
+  .contact-section { margin-bottom: 72px; }
+
+  .contact-primary {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 36px;
+    margin-bottom: 12px;
+  }
+
+  .contact-primary h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -0.4px;
+  }
+
+  .contact-primary p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 22px;
+  }
+
+  .email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 10px;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: var(--accent);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .email-link:hover {
+    background: rgba(0,229,160,0.12);
+    transform: translateY(-1px);
+  }
+
+  .email-link span {
+    font-family: 'DM Mono', monospace;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--accent);
+  }
+
+  /* ── Get started card ── */
+  .get-started-card {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 72px;
+  }
+
+  .get-started-text h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .get-started-text p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 340px;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 13px 22px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: #1fffc0;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0,229,160,0.25);
+  }
+
+  /* ── FAQ ── */
+  .faq-section { margin-bottom: 72px; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+
+  .faq-item:first-of-type { border-top: 1px solid var(--border); }
+
+  .faq-q {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 7px;
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .faq-a a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .faq-a a:hover { text-decoration: underline; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--muted2);
+    position: relative;
+    z-index: 1;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 600px) {
+    .contact-primary { padding: 26px 22px; }
+    .get-started-card { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sheet<span>Fix</span></a>
+  <ul class="nav-links">
+    <li><a href="how-it-works.html">How it works</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="get-started.html" class="nav-cta">Get started</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <p class="page-eyebrow">Get in touch</p>
+  <h1 class="page-title">No contact forms.<br><span>Just email.</span></h1>
+  <p class="page-intro">SheetFix keeps things simple. If you've got a question before submitting a brief, or want to talk through your situation first, reach out directly.</p>
+
+  <!-- Contact -->
+  <section class="contact-section">
+    <div class="section-label">Direct contact</div>
+    <div class="contact-primary">
+      <h3>Email us directly</h3>
+      <p>We respond to all enquiries personally. No autoresponders, no ticketing systems. If you've got a question about whether SheetFix is a fit, or something specific about your spreadsheet situation — just ask.</p>
+      <a href="mailto:sheetfix.nz@gmail.com" class="email-link">
+        ✉ <span>sheetfix.nz@gmail.com</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Get started card -->
+  <div class="get-started-card">
+    <div class="get-started-text">
+      <h3>Ready to get started?</h3>
+      <p>Fill in the brief and get a free instant analysis of your spreadsheet situation — no email needed to begin.</p>
+    </div>
+    <a href="get-started.html" class="btn-primary">Get my free analysis →</a>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="section-label">Before you reach out</div>
+
+    <div class="faq-item">
+      <div class="faq-q">What's the fastest way to get started?</div>
+      <div class="faq-a">Fill in the brief on the <a href="get-started.html">Get Started page</a>. You'll get an instant AI analysis of your situation — no waiting for a reply. That's the quickest path to getting your spreadsheet sorted.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do I need to know exactly what's wrong?</div>
+      <div class="faq-a">No. The brief asks you to describe what the spreadsheet does and what's frustrating you. That's enough. The analysis helps identify what's actually causing the problem.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I send my spreadsheet before filling in a brief?</div>
+      <div class="faq-a">We'd recommend filling in the brief first — it gives us the context we need to actually help. Once you've confirmed your analysis, you'll be prompted to send the file if it's a fix job.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How quickly do you respond to emails?</div>
+      <div class="faq-a">Within one business day in most cases. SheetFix is based in New Zealand, so if you're reaching out from elsewhere, time zones may apply.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is there a phone number?</div>
+      <div class="faq-a">No. SheetFix operates by email only — no calls, no video meetings. Everything is handled in writing so there's a clear record of what was agreed.</div>
+    </div>
+
+  </section>
+
+</div>
+
+<footer>
+  <span>© 2025 SheetFix</span>
+  <a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a>
+</footer>
+
+</body>
+</html>
