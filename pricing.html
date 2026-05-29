@@ -646,7 +646,7 @@
         <h3>Quick Fix</h3>
         <div class="price-desc">One tab, clear problem, straightforward solution.</div>
         <div class="price-amount">$149</div>
-        <div class="price-period">NZD · flat rate</div>
+        <div class="price-period">NZD · incl GST</div>
         <div class="price-divider"></div>
         <ul class="price-list">
           <li>Single tab or sheet</li>
@@ -664,7 +664,7 @@
         <h3>Full Fix or Build</h3>
         <div class="price-desc">Multi-tab, moderate complexity, logic sorted.</div>
         <div class="price-amount">$299</div>
-        <div class="price-period">NZD · flat rate</div>
+        <div class="price-period">NZD · incl GST</div>
         <div class="price-divider"></div>
         <ul class="price-list">
           <li>Multiple tabs or linked sheets</li>
@@ -682,7 +682,7 @@
         <h3>Full Build + Brand</h3>
         <div class="price-desc">Complex systems, dashboards, full branding.</div>
         <div class="price-amount">$499</div>
-        <div class="price-period">NZD · flat rate</div>
+        <div class="price-period">NZD · incl GST</div>
         <div class="price-divider"></div>
         <ul class="price-list">
           <li>Everything in Standard</li>
@@ -756,7 +756,7 @@
 </div>
 
 <footer>
-  <span>© 2025 SheetFix</span>
+  <span>© 2026 SheetFix</span>
   <a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a>
 </footer>
 
@@ -780,11 +780,11 @@
     if (weekly === 0) {
       tierMsg = 'Enter your hourly rate and hours above to see what your spreadsheet problem is really costing you.';
     } else if (weekly < 150) {
-      tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. A SheetFix Simple fix at <strong>$149</strong> pays for itself in a single week.`;
+      tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. A SheetFix Quick Fix at <strong>$149 incl GST</strong> pays for itself in a single week.`;
     } else if (weekly < 400) {
-      tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. A SheetFix Standard job at <strong>$299</strong> pays for itself in under two weeks.`;
+      tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. A SheetFix Full Fix or Build at <strong>$299 incl GST</strong> pays for itself in under two weeks.`;
     } else {
-      tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. Even the Advanced tier at <strong>$499</strong> pays for itself in just over a week.`;
+      tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. Even the Full Build + Brand at <strong>$499 incl GST</strong> pays for itself in just over a week.`;
     }
 
     document.getElementById('calcConclusion').innerHTML = tierMsg;
