@@ -124,7 +124,7 @@
     .nav-hamburger { display: flex; }
 
     .nav-links {
-      display: none;
+      display: none !important;
       flex-direction: column;
       gap: 0;
       position: absolute;
@@ -137,7 +137,7 @@
       z-index: 15;
     }
 
-    .nav-links.open { display: flex; }
+    .nav-links.open { display: flex !important; }
 
     .nav-links li { border-bottom: 1px solid var(--border); }
     .nav-links li:last-child { border-bottom: none; }
