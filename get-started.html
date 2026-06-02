@@ -213,7 +213,7 @@
 
   .field-hint {
     font-size: 13px;
-    color: var(--muted2);
+    color: #8a8a8a;
     margin-top: 5px;
     font-style: italic;
   }
@@ -223,7 +223,7 @@
   textarea {
     width: 100%;
     background: var(--surface2);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(0,229,160,0.45);
     border-radius: 8px;
     color: var(--text);
     font-family: 'DM Mono', monospace;
@@ -235,14 +235,20 @@
     appearance: none;
   }
 
+  input[type="text"]:hover,
+  input[type="email"]:hover,
+  textarea:hover {
+    border-color: rgba(0,229,160,0.7);
+  }
+
   input[type="text"]:focus,
   input[type="email"]:focus,
   textarea:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0,229,160,0.07);
+    box-shadow: 0 0 0 3px rgba(0,229,160,0.15);
   }
 
-  input::placeholder, textarea::placeholder { color: #888; }
+  input::placeholder, textarea::placeholder { color: #aaaaaa; }
 
   textarea {
     resize: vertical;
@@ -560,7 +566,7 @@
   .correction-box textarea {
     width: 100%;
     background: var(--surface2);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(0,229,160,0.45);
     border-radius: 8px;
     color: var(--text);
     font-family: 'DM Mono', monospace;
@@ -575,7 +581,7 @@
 
   .correction-box textarea:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0,229,160,0.07);
+    box-shadow: 0 0 0 3px rgba(0,229,160,0.15);
   }
 
   .btn-resubmit {
@@ -826,11 +832,11 @@
         </div>
       </div>
       <div class="field">
-        <label class="field-label" for="company">Company or organisation <span style="color:var(--muted2)">(optional)</span></label>
+        <label class="field-label" for="company">Company or organisation <span style="color:#888">(optional)</span></label>
         <input type="text" id="company" name="company" placeholder="e.g. Apex Construction">
       </div>
       <div class="field">
-        <label class="field-label" for="website">Website <span style="color:var(--muted2)">(optional)</span></label>
+        <label class="field-label" for="website">Website <span style="color:#888">(optional)</span></label>
         <input type="text" id="website" name="website" placeholder="e.g. www.yourcompany.co.nz">
         <div class="field-hint">Helps us match the spreadsheet to your brand and business.</div>
       </div>
@@ -956,7 +962,7 @@
         </div>
       </div>
       <div class="field">
-        <label class="field-label" for="extra">Anything else we should know? <span style="color:var(--muted2)">(optional)</span></label>
+        <label class="field-label" for="extra">Anything else we should know? <span style="color:#888">(optional)</span></label>
         <textarea id="extra" name="extra" placeholder="Industry context, specific features you've seen elsewhere, anything that would help us understand your situation..." maxlength="500" rows="3" oninput="countChars(this,'extraCount')"></textarea>
         <div class="char-row"><span id="extraCount">0</span>/500</div>
       </div>
