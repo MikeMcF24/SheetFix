@@ -604,7 +604,11 @@
   .sfx-mpct { font-size: 11px; color: var(--accent); min-width: 38px; text-align: right; font-weight: 700; }
 
   @media (max-width: 600px) {
-    .sfx-table { font-size: 9px; } .sfx-table th, .sfx-table td { height: 24px; }
+    .sfx-hero { overflow: hidden; max-width: 100%; }
+    .sfx-sheet { max-width: 100%; overflow: hidden; }
+    .sfx-gridwrap { overflow-x: hidden; max-width: 100%; }
+    .sfx-table { font-size: 9px; table-layout: fixed; width: 100%; max-width: 100%; } 
+    .sfx-table th, .sfx-table td { height: 24px; overflow: hidden; text-overflow: ellipsis; max-width: 0; }
     .sfx-mlabel { min-width: 56px; font-size: 9px; }
     .sfx-phase { letter-spacing: -1px; }
   }
@@ -674,9 +678,7 @@
     <li><a href="contact.html">Contact</a></li>
     <li><a href="get-started.html" class="nav-cta">Get started</a></li>
   </ul>
-  <button class="nav-hamburger" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </button>
+
 </nav>
 
 <div class="wrap">
