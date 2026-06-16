@@ -163,7 +163,6 @@
   .hero-sub {
     font-size: 16px;
     color: var(--muted);
-    max-width: 520px;
     line-height: 1.8;
     margin-bottom: 40px;
   }
@@ -272,11 +271,6 @@
 
   .problem-card:hover { border-color: var(--border-hover); }
 
-  .problem-icon {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-
   .problem-card h3 {
     font-family: 'Syne', sans-serif;
     font-size: 15px;
@@ -289,94 +283,6 @@
     font-size: 13px;
     color: var(--muted);
     line-height: 1.7;
-  }
-
-  /* ── Services ── */
-  .services-section { margin-bottom: 80px; }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .service-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px 26px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .service-card:hover {
-    border-color: var(--accent-border);
-    transform: translateY(-2px);
-  }
-
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--accent);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .service-card:hover::before { opacity: 1; }
-
-  .service-tag {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    background: var(--accent-dim);
-    border: 1px solid var(--accent-border);
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: 18px;
-  }
-
-  .service-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 10px;
-    letter-spacing: -0.5px;
-  }
-
-  .service-card p {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 20px;
-  }
-
-  .service-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .service-list li {
-    font-size: 13px;
-    color: var(--muted);
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .service-list li::before {
-    content: '→';
-    color: var(--accent);
-    flex-shrink: 0;
-    margin-top: 1px;
   }
 
   /* ── How it works teaser ── */
@@ -449,48 +355,6 @@
 
   .teaser-link:hover { gap: 10px; }
 
-  /* ── Who it's for ── */
-  .who-section { margin-bottom: 80px; }
-
-  .who-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .who-item {
-    background: var(--surface);
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    transition: background 0.2s;
-  }
-
-  .who-item:hover { background: var(--surface2); }
-
-  .who-check {
-    width: 22px;
-    height: 22px;
-    background: var(--accent-dim);
-    border: 1px solid var(--accent-border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 11px;
-    color: var(--accent);
-  }
-
-  .who-item span {
-    font-size: 14px;
-    color: var(--muted);
-  }
-
   /* ── CTA ── */
   .cta-block {
     background: var(--accent-dim);
@@ -517,12 +381,6 @@
     margin-left: auto;
     margin-right: auto;
     line-height: 1.7;
-  }
-
-  .cta-note {
-    font-size: 12px;
-    color: var(--muted2);
-    margin-top: 14px;
   }
 
   /* ── Footer ── */
@@ -665,53 +523,20 @@
     <div class="section-label">Sound familiar?</div>
     <div class="problem-grid">
       <div class="problem-card">
-        <div class="problem-icon">🔴</div>
         <h3>It's held together with hope</h3>
         <p>One wrong cell and the whole thing breaks. Nobody knows why it works — they just don't touch it.</p>
       </div>
       <div class="problem-card">
-        <div class="problem-icon">😵</div>
         <h3>You inherited someone else's mess</h3>
         <p>The person who built it left. Now it's your problem, and there's no documentation anywhere.</p>
       </div>
       <div class="problem-card">
-        <div class="problem-icon">⏱️</div>
         <h3>It takes too long every week</h3>
         <p>Copy-pasting, manual calculations, reformatting — tasks that should take minutes take hours.</p>
       </div>
       <div class="problem-card">
-        <div class="problem-icon">📊</div>
         <h3>You need it built from scratch</h3>
         <p>You know what you need it to do, but you don't know how to build it. Let's start from a brief.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section class="services-section">
-    <div class="section-label">Two ways to work together</div>
-    <div class="services-grid">
-      <div class="service-card">
-        <span class="service-tag">Fix it</span>
-        <h3>Fix my existing sheet</h3>
-        <p>You've already got a spreadsheet. It's just not working the way it should.</p>
-        <ul class="service-list">
-          <li>Formula errors cleaned up</li>
-          <li>Logic that actually makes sense</li>
-          <li>Layouts people can use</li>
-          <li>Colour coding that means something</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <span class="service-tag">Build it</span>
-        <h3>Build me one from scratch</h3>
-        <p>You know what you need it to do. We'll build it clean from a plain-language brief.</p>
-        <ul class="service-list">
-          <li>Built to your exact workflow</li>
-          <li>Branded to your business</li>
-          <li>Documented so anyone can use it</li>
-          <li>Sample data included</li>
-        </ul>
       </div>
     </div>
   </section>
@@ -741,35 +566,11 @@
     </div>
   </section>
 
-  <!-- Who it's for -->
-  <section class="who-section">
-    <div class="section-label">Who this is for</div>
-    <div class="who-list">
-      <div class="who-item">
-        <div class="who-check">✓</div>
-        <span>Small business owners who didn't sign up to be Excel experts</span>
-      </div>
-      <div class="who-item">
-        <div class="who-check">✓</div>
-        <span>Office managers dealing with a spreadsheet someone else built</span>
-      </div>
-      <div class="who-item">
-        <div class="who-check">✓</div>
-        <span>Solo operators who need something that actually works</span>
-      </div>
-      <div class="who-item">
-        <div class="who-check">✓</div>
-        <span>Anyone who's been putting off fixing a spreadsheet for months</span>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA -->
   <div class="cta-block">
-    <h2>Start with the free analysis</h2>
-    <p>Describe your spreadsheet situation. We'll give you an instant breakdown of what we'd fix and how — no commitment needed.</p>
-    <a href="get-started.html" class="btn-primary">Get started →</a>
-    <p class="cta-note">Free analysis · No calls · Delivered by email</p>
+    <h2>Describe it. We'll diagnose it.</h2>
+    <p>Takes about 5 minutes. You'll get an instant AI analysis of your situation — no commitment, no calls.</p>
+    <a href="get-started.html" class="btn-primary">Get my free analysis →</a>
   </div>
 
 </div>
