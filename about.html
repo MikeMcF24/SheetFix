@@ -199,26 +199,62 @@
   /* ── Testimonials ── */
   .testimonials-section { margin-bottom: 72px; }
 
-  .testimonial-card {
+  .testimonial-carousel {
+    position: relative;
     background: var(--surface);
     border: 1px solid var(--border);
     border-left: 3px solid var(--accent);
     border-radius: 12px;
-    padding: 26px 28px;
-    margin-bottom: 12px;
+    padding: 36px 36px 28px;
+    min-height: 160px;
+  }
+
+  .testimonial-slide {
+    position: absolute;
+    inset: 36px 36px 28px;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    pointer-events: none;
+  }
+
+  .testimonial-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+    inset: auto;
   }
 
   .testimonial-quote {
     font-size: 14px;
     color: var(--muted);
     line-height: 1.85;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .testimonial-attr {
     font-size: 12px;
     color: var(--accent);
     letter-spacing: 0.04em;
+  }
+
+  .testimonial-dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .testimonial-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border-hover);
+    transition: background 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+
+  .testimonial-dot.active {
+    background: var(--accent);
+    transform: scale(1.4);
   }
 
   /* ── Who this isn't for ── */
@@ -429,21 +465,30 @@
   <section class="testimonials-section">
     <div class="section-label">What people say</div>
 
-    <div class="testimonial-card">
-      <p class="testimonial-quote">"I had tried building pricing spreadsheets myself, but every time I got one rule or formula wrong, the whole thing fell apart. I needed something simple that could price jobs quickly, update unit rates, add margins, and help me back-cost work as the job progressed. SheetFix turned it into a clean, professional pricing tool with a summary dashboard, so I can save time on manual updates and actually trust the numbers."</p>
-      <p class="testimonial-attr">— Gav, Builder</p>
-    </div>
+    <div class="testimonial-carousel" id="testimonial-carousel">
 
-    <div class="testimonial-card">
-      <p class="testimonial-quote">"I needed something to keep me motivated during recovery after surgery. Mike built me a fitness tracker with activity goals and a dashboard to track my progress — exactly what I needed to get back on my feet. Simple to use and works perfectly."</p>
-      <p class="testimonial-attr">— SheetFix client</p>
-    </div>
+      <div class="testimonial-slide active">
+        <p class="testimonial-quote">"I had tried building pricing spreadsheets myself, but every time I got one rule or formula wrong, the whole thing fell apart. I needed something simple that could price jobs quickly, update unit rates, add margins, and help me back-cost work as the job progressed. SheetFix turned it into a clean, professional pricing tool with a summary dashboard, so I can save time on manual updates and actually trust the numbers."</p>
+        <p class="testimonial-attr">— Gav, Builder</p>
+      </div>
 
-    <div class="testimonial-card">
-      <p class="testimonial-quote">"Mike built me a vehicle fuel log that tracks all my running costs and mileage across multiple vehicles. Clean, easy to use, and everything calculates itself. Does exactly what I needed."</p>
-      <p class="testimonial-attr">— Pete</p>
-    </div>
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">"I needed something to keep me motivated during recovery after surgery. Mike built me a fitness tracker with activity goals and a dashboard to track my progress — exactly what I needed to get back on my feet. Simple to use and works perfectly."</p>
+        <p class="testimonial-attr">— SheetFix client</p>
+      </div>
 
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">"Mike built me a vehicle fuel log that tracks all my running costs and mileage across multiple vehicles. Clean, easy to use, and everything calculates itself. Does exactly what I needed."</p>
+        <p class="testimonial-attr">— Pete</p>
+      </div>
+
+      <div class="testimonial-dots" id="testimonial-dots">
+        <div class="testimonial-dot active" onclick="goToSlide(0)"></div>
+        <div class="testimonial-dot" onclick="goToSlide(1)"></div>
+        <div class="testimonial-dot" onclick="goToSlide(2)"></div>
+      </div>
+
+    </div>
   </section>
 
   <!-- Who this isn't for -->
@@ -476,5 +521,36 @@
   <a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a>
 </footer>
 
+<script>
+(function(){
+  var slides = document.querySelectorAll('.testimonial-slide');
+  var dots = document.querySelectorAll('.testimonial-dot');
+  var current = 0;
+  var timer;
+
+  function goToSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    resetTimer();
+  }
+
+  function next() {
+    goToSlide((current + 1) % slides.length);
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 5000);
+  }
+
+  // expose for onclick
+  window.goToSlide = goToSlide;
+
+  resetTimer();
+})();
+</script>
 </body>
 </html>
