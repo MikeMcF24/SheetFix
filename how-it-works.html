@@ -320,78 +320,6 @@
     margin-top: 12px;
   }
 
-  /* ── V1 vs upgrade ── */
-  .tier-section { margin-bottom: 72px; }
-
-  .tier-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-  }
-
-  .tier-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px 26px;
-  }
-
-  .tier-card.upgrade {
-    border-color: var(--accent-border);
-    background: var(--accent-dim);
-  }
-
-  .tier-badge {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-  }
-
-  .tier-card.upgrade .tier-badge {
-    color: var(--accent);
-    background: rgba(0,229,160,0.1);
-    border-color: var(--accent-border);
-  }
-
-  .tier-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 14px;
-    letter-spacing: -0.3px;
-  }
-
-  .tier-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .tier-list li {
-    font-size: 13px;
-    color: var(--muted);
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    line-height: 1.5;
-  }
-
-  .tier-list li::before {
-    content: '→';
-    color: var(--accent);
-    flex-shrink: 0;
-  }
-
   /* ── FAQ ── */
   .faq-section { margin-bottom: 72px; }
 
@@ -822,10 +750,10 @@
         <div class="step-line"></div>
       </div>
       <div class="step-content">
-        <h3>Fill in the brief</h3>
-        <p>Tell us what your spreadsheet does, what's going wrong, and what you need it to do. The form takes about 5 minutes.</p>
-        <p>Our AI analyses your brief instantly and gives you a plain-language breakdown of what we'd fix and why — before you spend a cent.</p>
-        <p>Your brief is processed via the Claude API. If your spreadsheet contains sensitive data, share column headers or a description only — not the live file.</p>
+        <h3>Describe the situation</h3>
+        <p>Tell SheetFix what your spreadsheet does, what's going wrong, and what you need it to do. The form takes about 5 minutes.</p>
+        <p>An AI analyses your brief instantly and gives you a plain-language breakdown of what needs fixing and why — before you spend a cent.</p>
+        <p>Your description is processed via an AI tool. If your spreadsheet contains sensitive data, describe the issue in general terms or use dummy examples — do not paste confidential information into the form.</p>
         <div class="step-note">Free · No account needed · Takes ~5 minutes</div>
       </div>
     </div>
@@ -836,78 +764,29 @@
         <div class="step-line"></div>
       </div>
       <div class="step-content">
-        <h3>Confirm your analysis</h3>
-        <p>Review the AI analysis. If something's off, you can correct it and get an updated version. Once you're happy, confirm — that locks in your brief and sends it through to us.</p>
-        <p>If you're fixing an existing sheet, you'll send us the file by email at this point.</p>
+        <h3>Review and confirm</h3>
+        <p>You get a plain-language AI analysis within seconds — what's wrong, what would fix it, and which tier fits. If anything's off, correct it and get an updated version. No commitment until you're happy.</p>
+        <p>If you're fixing an existing sheet, you'll send the file by email once you've confirmed the brief. SheetFix will review the scope and confirm the next step before work begins.</p>
       </div>
     </div>
 
     <div class="step-item">
       <div class="step-left">
         <div class="step-circle">03</div>
-        <div class="step-line"></div>
       </div>
       <div class="step-content">
-        <h3>Receive your instant analysis</h3>
-        <p>Within seconds of submitting, you get a plain-language AI analysis of your spreadsheet situation — what's wrong, what would fix it, and which tier your job sits in.</p>
-        <p>Review it, confirm it's right, and if anything's off you can correct it and get an updated version. No commitment until you're happy.</p>
-      </div>
-    </div>
-
-    <div class="step-item">
-      <div class="step-left">
-        <div class="step-circle">04</div>
-        <div class="step-line"></div>
-      </div>
-      <div class="step-content">
-        <h3>Confirm and we get to work</h3>
-        <p>Once you confirm the analysis, we'll send an invoice for the agreed tier. Once payment is received, we get started — your finished spreadsheet is delivered by email within 2–3 business days.</p>
-        <p>Every file includes a Start Here tab, colour-coded inputs, and clean logic. One or two rounds of revisions are included — if something needs tweaking, we'll fix it, no worries.</p>
+        <h3>SheetFix builds and delivers</h3>
+        <p>Once you confirm, SheetFix sends an invoice for the agreed tier. Work starts when payment clears — your finished spreadsheet is delivered by email within 2–3 business days.</p>
+        <p>Every file includes a Start Here tab, colour-coded inputs, and clean logic. Reasonable clarification and minor tidy-up after delivery are included — if something needs tweaking, it gets sorted.</p>
       </div>
     </div>
 
   </section>
 
-  <!-- Tier comparison -->
-  <section class="tier-section">
-    <div class="section-label">What's included at each tier</div>
-    <div class="tier-grid">
-      <div class="tier-card">
-        <span class="tier-badge">Quick Fix — $149 incl GST</span>
-        <h3>Single tab, clear problem</h3>
-        <ul class="tier-list">
-          <li>Errors and broken formulas fixed</li>
-          <li>Clean, logical layout</li>
-          <li>Start Here tab with instructions</li>
-          <li>Colour coding that means something</li>
-          <li>2–3 business day turnaround</li>
-        </ul>
-      </div>
-      <div class="tier-card upgrade">
-        <span class="tier-badge">Full Fix or Build — $299 incl GST</span>
-        <h3>Multi-tab, logic sorted</h3>
-        <ul class="tier-list">
-          <li>Everything in Quick Fix</li>
-          <li>Multi-tab structure and linked formulas</li>
-          <li>Dropdowns, sample data, Start Here tab</li>
-          <li>2–3 business day turnaround</li>
-          <li>Full Build + Brand upgrade available</li>
-        </ul>
-      </div>
-      <div class="tier-card">
-        <span class="tier-badge">Full Build + Brand — $499 incl GST</span>
-        <h3>Dashboards, automation, branding</h3>
-        <ul class="tier-list">
-          <li>Everything in Full Fix or Build</li>
-          <li>Summary dashboards and charts</li>
-          <li>Full automation and linked logic</li>
-          <li>Branded to your business colours</li>
-          <li>Conditional formatting throughout</li>
-          <li>2–3 business day turnaround</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <!-- Pricing pointer -->
+  <p style="font-size:14px; color:var(--muted); margin-bottom:72px;">
+    Three flat-price tiers — $149, $299, or $499 incl GST. Not sure which fits? The free analysis tells you. <a href="pricing.html" style="color:var(--accent); text-decoration:none;">See full pricing →</a>
+  </p>
 
   <!-- FAQ -->
   <section class="faq-section">
@@ -915,12 +794,12 @@
 
     <div class="faq-item">
       <div class="faq-q">What software do you work with?</div>
-      <div class="faq-a">Excel and Google Sheets. Both covered. Tell us which one you use in the brief.</div>
+      <div class="faq-a">Excel and Google Sheets. Both covered. Mention which one you use in the brief.</div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q">Do I need to share my actual data?</div>
-      <div class="faq-a">Not always. For fix jobs, we'll need the file — but you can replace sensitive data with dummy values before sending. For builds from scratch, we work from your brief and use sample data to demonstrate the logic.</div>
+      <div class="faq-a">Not always. For fix jobs, SheetFix needs the file — but you can replace sensitive data with dummy values before sending. For builds from scratch, SheetFix works from your brief and uses sample data to demonstrate the logic.</div>
     </div>
 
     <div class="faq-item">
@@ -930,12 +809,12 @@
 
     <div class="faq-item">
       <div class="faq-q">What if the delivered file isn't quite right?</div>
-      <div class="faq-a">One or two rounds of revisions are included — if something needs tweaking, we'll fix it, no worries.</div>
+      <div class="faq-a">Reasonable clarification and minor tidy-up are included after delivery — if something needs tweaking, it gets sorted.</div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q">Do you do ongoing work?</div>
-      <div class="faq-a">Not yet — but a maintenance subscription is coming. If you've got an ongoing need, get in touch and we'll talk through what makes sense.</div>
+      <div class="faq-a">Not yet — but a maintenance subscription is coming. If you've got an ongoing need, get in touch and SheetFix can talk through what makes sense.</div>
     </div>
 
   </section>
@@ -943,16 +822,32 @@
   <!-- CTA -->
   <div class="cta-block">
     <h2>Ready to get started?</h2>
-    <p>Fill in the brief, get your free analysis, and we'll take it from there.</p>
+    <p>Fill in the brief, get your free analysis, and SheetFix will take it from there.</p>
     <a href="get-started.html" class="btn-primary">Get my free analysis →</a>
-    <p class="cta-note">Free analysis · No calls · Delivered by email</p>
+    <p class="cta-note">Free analysis · No commitment · Delivered by email</p>
+    <p style="font-size:12px; color:var(--muted2); margin-top:18px; max-width:440px; margin-left:auto; margin-right:auto; line-height:1.6;">No spreadsheet upload needed for the free brief. Describe the issue in general terms. <a href="privacy.html" style="color:var(--muted); text-decoration:none;">Privacy & Data Handling →</a></p>
   </div>
 
 </div>
 
 <footer>
-  <span>© 2026 SheetFix</span>
-  <a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a>
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; margin-bottom:24px;">
+    <div>
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:15px; color:var(--text); letter-spacing:-0.3px;">Sheet<span style="color:var(--accent);">Fix</span></div>
+      <div style="font-size:12px; color:var(--muted2); margin-top:4px;">Wellington, New Zealand</div>
+    </div>
+    <ul style="display:flex; flex-wrap:wrap; gap:8px 20px; list-style:none;">
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="how-it-works.html" style="color:var(--accent);">How it works</a></li>
+      <li><a href="privacy.html">Privacy & Data Handling</a></li>
+      <li><a href="terms.html">Terms & Scope</a></li>
+      <li><a href="get-started.html">Get started</a></li>
+    </ul>
+  </div>
+  <div style="border-top:1px solid var(--border); padding-top:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+    <span>© 2026 SheetFix</span>
+    <span><a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a></span>
+  </div>
 </footer>
 <script>
 /* Mobile hamburger toggle */

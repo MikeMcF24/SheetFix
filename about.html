@@ -4,15 +4,15 @@
 <link rel="canonical" href="https://sheetfix.co.nz/about.html" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="SheetFix is a one-person spreadsheet service based in New Zealand. Built for small businesses and sole traders who need their spreadsheets fixed or built properly — with plain language and no jargon.">
+<meta name="description" content="SheetFix is a one-person spreadsheet service based in Wellington, New Zealand. Built for small businesses and sole traders who need their spreadsheets fixed or built properly — with plain language and no jargon.">
 <meta property="og:title" content="About SheetFix — Spreadsheet Fix & Build">
-<meta property="og:description" content="SheetFix is a one-person spreadsheet service based in New Zealand. Built for small businesses and sole traders who need their spreadsheets fixed or built properly — with plain language and no jargon.">
+<meta property="og:description" content="SheetFix is a one-person spreadsheet service based in Wellington, New Zealand. Built for small businesses and sole traders who need their spreadsheets fixed or built properly — with plain language and no jargon.">
 <meta property="og:url" content="https://sheetfix.co.nz/about.html">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://sheetfix.co.nz/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About SheetFix — Spreadsheet Fix & Build">
-<meta name="twitter:description" content="SheetFix is a one-person spreadsheet service based in New Zealand. Built for small businesses and sole traders who need their spreadsheets fixed or built properly — with plain language and no jargon.">
+<meta name="twitter:description" content="SheetFix is a one-person spreadsheet service based in Wellington, New Zealand. Built for small businesses and sole traders who need their spreadsheets fixed or built properly — with plain language and no jargon.">
 <meta name="twitter:image" content="https://sheetfix.co.nz/og-image.png">
 <title>About — SheetFix</title>
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -263,33 +263,40 @@
   .not-for-block {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px 28px;
+    border-radius: 16px;
+    padding: 32px 36px;
   }
 
   .not-for-block p {
     font-size: 14px;
     color: var(--muted);
     line-height: 1.8;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
 
   .not-for-block p:last-child { margin-bottom: 0; }
 
+  .not-for-block a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .not-for-block a:hover { text-decoration: underline; }
+
   .not-list {
     list-style: none;
+    margin: 16px 0;
     display: flex;
     flex-direction: column;
-    gap: 9px;
-    margin-bottom: 18px;
+    gap: 10px;
   }
 
   .not-list li {
-    font-size: 13px;
-    color: var(--muted);
     display: flex;
     align-items: flex-start;
     gap: 10px;
+    font-size: 14px;
+    color: var(--muted);
     line-height: 1.5;
   }
 
@@ -353,28 +360,97 @@
 
   .cta-note { font-size: 12px; color: var(--muted2); margin-top: 14px; }
 
+  .privacy-note {
+    font-size: 12px;
+    color: var(--muted2);
+    margin-top: 18px;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .privacy-note a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .privacy-note a:hover { color: var(--text); }
+
   footer {
     border-top: 1px solid var(--border);
     padding: 32px 24px;
     max-width: 720px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    font-size: 13px;
+    color: var(--muted2);
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .footer-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .footer-brand span { color: var(--accent); }
+
+  .footer-location {
+    font-size: 12px;
+    color: var(--muted2);
+    margin-top: 4px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 13px;
-    color: var(--muted2);
-    position: relative;
-    z-index: 1;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
-  footer a { color: var(--muted); text-decoration: none; }
-  footer a:hover { color: var(--text); }
+  .footer-email a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-email a:hover { color: var(--text); }
 
   @media (max-width: 600px) {
-    .values-grid { grid-template-columns: 1fr; }
     .story-block { padding: 26px 22px; }
     .cta-block { padding: 32px 22px; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .footer-top { flex-direction: column; gap: 16px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
   }
 
   /* ── Mobile nav ── */
@@ -447,14 +523,14 @@
 <div class="wrap">
 
   <p class="page-eyebrow">About SheetFix</p>
-  <h1 class="page-title">Built by someone who's<br><span>seen the mess.</span></h1>
-  <p class="page-intro">SheetFix exists because bad spreadsheets are everywhere — and they quietly waste time, cause errors, and stress people out who never asked to become Excel experts.</p>
+  <h1 class="page-title">One person.<br><span>Your spreadsheet, sorted.</span></h1>
+  <p class="page-intro">SheetFix is a small Wellington-based service run by one person, for small businesses that rely on spreadsheets but don't have the time, patience, or in-house skills to untangle them.</p>
 
   <!-- Origin story -->
   <section class="story-section">
     <div class="section-label">Where this came from</div>
     <div class="story-block">
-      <p>SheetFix is a one-person operation, based in New Zealand. I build and fix spreadsheets for small businesses, sole traders, and anyone who's inherited a sheet they don't fully understand or needs one built from scratch.</p>
+      <p>I build and fix spreadsheets for small businesses, sole traders, and anyone who's inherited a sheet they don't fully understand — or needs one made properly from a brief.</p>
       <p>I've worked alongside businesses and trade organisations long enough to see the same pattern repeat: a spreadsheet that started simple, got added to by three different people, and is now something nobody fully understands — but everyone depends on.</p>
       <p><strong>The problem isn't the spreadsheet. It's that fixing it properly takes knowledge most people don't have time to develop.</strong> That's what SheetFix is for.</p>
       <p>You describe the situation, get a free AI-powered analysis of what's wrong, and I build you something clean — with instructions, logic that makes sense, and a layout that doesn't require a manual to interpret.</p>
@@ -479,7 +555,7 @@
 
       <div class="testimonial-slide">
         <p class="testimonial-quote">"Mike built me a vehicle fuel log that tracks all my running costs and mileage across multiple vehicles. Clean, easy to use, and everything calculates itself. Does exactly what I needed."</p>
-        <p class="testimonial-attr">— Pete</p>
+        <p class="testimonial-attr">— Pete, Transport operator</p>
       </div>
 
       <div class="testimonial-dots" id="testimonial-dots">
@@ -495,14 +571,14 @@
   <section class="not-for-section">
     <div class="section-label">Who this isn't for</div>
     <div class="not-for-block">
-      <p>We'll help anyone who comes across SheetFix — but it may not be the right fit for everyone, and it's worth being upfront about that.</p>
+      <p>I'll help anyone who comes across SheetFix — but it may not be the right fit for everyone, and it's worth being upfront about that.</p>
       <ul class="not-list">
         <li>Enterprise teams with IT departments and dedicated data analysts</li>
         <li>Businesses that need database software, not spreadsheets</li>
         <li>Complex integrations across multiple platforms and APIs</li>
         <li>Anyone looking for ongoing weekly managed services (subscription coming later)</li>
       </ul>
-      <p>If you're not sure whether SheetFix is a fit for your situation, the free analysis will tell you honestly — including if what you need is something bigger than a spreadsheet fix.</p>
+      <p>If you're not sure whether SheetFix is a fit for your situation, the free analysis will tell you — including if what you need is something bigger than a spreadsheet fix. See the full <a href="terms.html">Terms & Scope</a> for details.</p>
     </div>
   </section>
 
@@ -511,14 +587,30 @@
     <h2>Start with the free analysis</h2>
     <p>Describe your spreadsheet situation and get an instant AI analysis — then I'll take it from there.</p>
     <a href="get-started.html" class="btn-primary">Get my free analysis →</a>
-    <p class="cta-note">Free · No calls · Delivered by email</p>
+    <p class="cta-note">Free · No commitment · Delivered by email</p>
+    <p class="privacy-note">No spreadsheet upload needed for the free brief. Describe the issue in general terms. <a href="privacy.html">Privacy & Data Handling →</a></p>
   </div>
 
 </div>
 
 <footer>
-  <span>© 2026 SheetFix</span>
-  <a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Sheet<span>Fix</span></div>
+      <div class="footer-location">Wellington, New Zealand</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="privacy.html">Privacy & Data Handling</a></li>
+      <li><a href="terms.html">Terms & Scope</a></li>
+      <li><a href="get-started.html">Get started</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 SheetFix</span>
+    <span class="footer-email"><a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a></span>
+  </div>
 </footer>
 
 <script>
@@ -546,9 +638,7 @@
     timer = setInterval(next, 5000);
   }
 
-  // expose for onclick
   window.goToSlide = goToSlide;
-
   resetTimer();
 })();
 </script>

@@ -285,6 +285,43 @@
     line-height: 1.7;
   }
 
+  /* ── Good for section ── */
+  .goodfor-section { margin-bottom: 80px; }
+
+  .goodfor-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .goodfor-tag {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .goodfor-tag:hover {
+    border-color: var(--border-hover);
+    color: var(--text);
+  }
+
+  .goodfor-note {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--muted2);
+  }
+
+  .goodfor-note a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .goodfor-note a:hover { color: var(--text); }
+
   /* ── How it works teaser ── */
   .how-teaser {
     background: var(--surface);
@@ -355,6 +392,121 @@
 
   .teaser-link:hover { gap: 10px; }
 
+  /* ── Before/After examples ── */
+  .examples-section { margin-bottom: 80px; }
+
+  .example-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 30px;
+    margin-bottom: 12px;
+  }
+
+  .example-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 18px;
+    letter-spacing: -0.3px;
+  }
+
+  .example-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .example-col-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .example-before .example-col-label { color: var(--muted2); }
+  .example-after .example-col-label { color: var(--accent); }
+
+  .example-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .example-col ul li {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .example-before ul li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: var(--muted2);
+    font-size: 10px;
+    top: 2px;
+  }
+
+  .example-after ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 11px;
+    top: 1px;
+  }
+
+  /* ── Bookkeepers section ── */
+  .bookkeepers-section { margin-bottom: 80px; }
+
+  .bookkeepers-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 36px;
+  }
+
+  .bookkeepers-block h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: -0.4px;
+  }
+
+  .bookkeepers-block p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 16px;
+  }
+
+  .bookkeepers-block p:last-child { margin-bottom: 0; }
+
+  .bookkeepers-block a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .bookkeepers-block a:hover { text-decoration: underline; }
+
+  /* ── Fun line ── */
+  .fun-line {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted2);
+    margin-bottom: 48px;
+    padding: 0 20px;
+    line-height: 1.6;
+  }
+
   /* ── CTA ── */
   .cta-block {
     background: var(--accent-dim);
@@ -383,31 +535,103 @@
     line-height: 1.7;
   }
 
+  .privacy-note {
+    font-size: 12px;
+    color: var(--muted2);
+    margin-top: 18px;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .privacy-note a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .privacy-note a:hover { color: var(--text); }
+
   /* ── Footer ── */
   footer {
     border-top: 1px solid var(--border);
     padding: 32px 24px;
     max-width: 720px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    font-size: 13px;
+    color: var(--muted2);
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .footer-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .footer-brand span { color: var(--accent); }
+
+  .footer-location {
+    font-size: 12px;
+    color: var(--muted2);
+    margin-top: 4px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 13px;
-    color: var(--muted2);
-    position: relative;
-    z-index: 1;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
-  footer a { color: var(--muted); text-decoration: none; }
-  footer a:hover { color: var(--text); }
+  .footer-email a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-email a:hover { color: var(--text); }
 
   @media (max-width: 600px) {
-    .problem-grid, .services-grid { grid-template-columns: 1fr; }
+    .problem-grid { grid-template-columns: 1fr; }
     .steps-row { grid-template-columns: 1fr; }
+    .example-cols { grid-template-columns: 1fr; }
     .hero h1 { letter-spacing: -1px; }
     .how-teaser { padding: 28px 22px; }
     .cta-block { padding: 36px 24px; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .bookkeepers-block { padding: 28px 24px; }
+    .footer-top { flex-direction: column; gap: 16px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
     nav { flex-wrap: wrap; gap: 16px; }
     .nav-links { gap: 18px; }
   }
@@ -513,9 +737,9 @@
   <div class="trust-bar">
     <strong>Free analysis included</strong>
     <span class="trust-dot"></span>
-    <span>No calls. No jargon. Just a better spreadsheet.</span>
+    <span>Fixed pricing, no jargon, no surprises.</span>
     <span class="trust-dot"></span>
-    <span>🏆 Crowned champions of the "If It Ain't Broke, Don't Fix It, but We Fixed It And It's Way Better" Excel Spreadsheet Awards 2026 and probably 2027 too.</span>
+    <span>Email-first — everything in writing.</span>
   </div>
 
   <!-- Problem section -->
@@ -536,9 +760,28 @@
       </div>
       <div class="problem-card">
         <h3>You need it built from scratch</h3>
-        <p>You know what you need it to do, but you don't know how to build it. Let's start from a brief.</p>
+        <p>You know what you need it to do, but you don't know how to build it. Start from a brief.</p>
       </div>
     </div>
+  </section>
+
+  <!-- Good for -->
+  <section class="goodfor-section">
+    <div class="section-label">Good for</div>
+    <div class="goodfor-grid">
+      <span class="goodfor-tag">Pricing sheets</span>
+      <span class="goodfor-tag">Quoting tools</span>
+      <span class="goodfor-tag">Job trackers</span>
+      <span class="goodfor-tag">Back-costing sheets</span>
+      <span class="goodfor-tag">Stock or inventory sheets</span>
+      <span class="goodfor-tag">Fuel or mileage logs</span>
+      <span class="goodfor-tag">Timesheet summaries</span>
+      <span class="goodfor-tag">Simple dashboards</span>
+      <span class="goodfor-tag">Monthly reporting sheets</span>
+      <span class="goodfor-tag">Training or compliance trackers</span>
+      <span class="goodfor-tag">Inherited spreadsheets no one wants to touch</span>
+    </div>
+    <p class="goodfor-note">Not sure if your sheet fits? <a href="terms.html">See what's in scope →</a></p>
   </section>
 
   <!-- How it works teaser -->
@@ -548,36 +791,141 @@
       <div class="steps-row">
         <div class="step">
           <div class="step-num">01</div>
-          <h4>Fill in the brief</h4>
-          <p>Tell us what's wrong or what you need. Takes about 5 minutes. Our AI gives you a free instant analysis.</p>
+          <h4>Describe the situation</h4>
+          <p>Fill in a short brief about what's wrong or what you need. Takes about 5 minutes. SheetFix gives you a free instant analysis.</p>
         </div>
         <div class="step">
           <div class="step-num">02</div>
-          <h4>Confirm your analysis</h4>
-          <p>Review the plain-language breakdown of what we'd fix and which tier fits. Tweak anything that's off, then confirm when you're happy.</p>
+          <h4>Review and confirm</h4>
+          <p>Check the plain-language breakdown of what needs fixing and which tier fits. Confirm when you're happy, then send your spreadsheet when ready.</p>
         </div>
         <div class="step">
           <div class="step-num">03</div>
-          <h4>We build and deliver</h4>
-          <p>Pay for the agreed tier and we get to work. Your finished spreadsheet lands by email within 2–3 business days, ready to use.</p>
+          <h4>SheetFix builds and delivers</h4>
+          <p>Pay for the agreed tier and SheetFix gets to work. Your finished spreadsheet lands by email within 2–3 business days, ready to use.</p>
         </div>
       </div>
       <a href="how-it-works.html" class="teaser-link">Full breakdown of the process →</a>
     </div>
   </section>
 
+  <!-- Before/After examples -->
+  <section class="examples-section">
+    <div class="section-label">Example fixes</div>
+
+    <div class="example-card">
+      <h3>Pricing sheet</h3>
+      <div class="example-cols">
+        <div class="example-col example-before">
+          <div class="example-col-label">Before</div>
+          <ul>
+            <li>Formulas hard to follow</li>
+            <li>Margins not clear</li>
+            <li>Rates manually adjusted</li>
+            <li>No simple job summary</li>
+          </ul>
+        </div>
+        <div class="example-col example-after">
+          <div class="example-col-label">After</div>
+          <ul>
+            <li>Cleaner structure</li>
+            <li>Clearer inputs</li>
+            <li>Automatic margin view</li>
+            <li>Simple quote summary</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-card">
+      <h3>Job tracker</h3>
+      <div class="example-cols">
+        <div class="example-col example-before">
+          <div class="example-col-label">Before</div>
+          <ul>
+            <li>Too many tabs</li>
+            <li>Inconsistent status wording</li>
+            <li>Manual copy-paste</li>
+            <li>No clear overdue view</li>
+          </ul>
+        </div>
+        <div class="example-col example-after">
+          <div class="example-col-label">After</div>
+          <ul>
+            <li>Tidy tracker</li>
+            <li>Simple dropdowns</li>
+            <li>Clear status view</li>
+            <li>Easier weekly review</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-card">
+      <h3>Back-costing / reporting sheet</h3>
+      <div class="example-cols">
+        <div class="example-col example-before">
+          <div class="example-col-label">Before</div>
+          <ul>
+            <li>Actual costs hard to compare</li>
+            <li>Summary built manually</li>
+            <li>Formulas easy to break</li>
+          </ul>
+        </div>
+        <div class="example-col example-after">
+          <div class="example-col-label">After</div>
+          <ul>
+            <li>Cleaner cost categories</li>
+            <li>Automatic summary</li>
+            <li>Easier estimate vs actual comparison</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bookkeepers and accountants -->
+  <section class="bookkeepers-section">
+    <div class="section-label">For bookkeepers & accountants</div>
+    <div class="bookkeepers-block">
+      <h3>Have a client spreadsheet that makes your job harder?</h3>
+      <p>Some client spreadsheets have been patched together over years. They sort of work, but they take too long, create errors, or make monthly reporting harder than it needs to be.</p>
+      <p>SheetFix can clean up the file, simplify the structure, fix formulas, and hand it back with plain-English instructions so your client actually understands how to use it.</p>
+      <p>If a spreadsheet is causing repeated problems for you or your client, <a href="get-started.html">submit a brief</a> or <a href="mailto:sheetfix.nz@gmail.com">email SheetFix</a> to discuss.</p>
+    </div>
+  </section>
+
+  <!-- Fun line (moved from trust bar) -->
+  <p class="fun-line">🏆 Crowned champions of the "If It Ain't Broke, Don't Fix It, but We Fixed It And It's Way Better" Excel Spreadsheet Awards 2026 and probably 2027 too.</p>
+
   <!-- CTA -->
   <div class="cta-block">
-    <h2>Describe it. We'll diagnose it.</h2>
+    <h2>Describe it. SheetFix will diagnose it.</h2>
     <p>Takes about 5 minutes. You'll get an instant AI analysis of your situation — no commitment, no calls.</p>
     <a href="get-started.html" class="btn-primary">Get my free analysis →</a>
+    <p class="privacy-note">You don't need to upload your spreadsheet for the free brief. Describe the issue in general terms first. If your sheet contains sensitive data, use dummy examples or keep the description high-level. <a href="privacy.html">Privacy & Data Handling →</a></p>
   </div>
 
 </div>
 
 <footer>
-  <span>© 2026 SheetFix</span>
-  <a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Sheet<span>Fix</span></div>
+      <div class="footer-location">Wellington, New Zealand</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="privacy.html">Privacy & Data Handling</a></li>
+      <li><a href="terms.html">Terms & Scope</a></li>
+      <li><a href="get-started.html">Get started</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 SheetFix</span>
+    <span class="footer-email"><a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a></span>
+  </div>
 </footer>
 
 </body>

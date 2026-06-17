@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="canonical" href="https://sheetfix.co.nz/terms.html" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="What SheetFix does, what it doesn't do, and how the service works. Plain English terms and scope for small business spreadsheet fixes and builds.">
+<meta property="og:title" content="Terms & Scope — SheetFix">
+<meta property="og:description" content="What SheetFix does, what it doesn't do, and how the service works. Plain English terms and scope.">
+<meta property="og:url" content="https://sheetfix.co.nz/terms.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://sheetfix.co.nz/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Terms & Scope — SheetFix">
+<meta name="twitter:description" content="What SheetFix does, what it doesn't do, and how the service works. Plain English terms and scope.">
+<meta name="twitter:image" content="https://sheetfix.co.nz/og-image.png">
+<title>Terms & Scope — SheetFix</title>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1a1a1a;
+    --border: #242424;
+    --border-hover: #333;
+    --accent: #00e5a0;
+    --accent-dim: rgba(0,229,160,0.08);
+    --accent-border: rgba(0,229,160,0.22);
+    --text: #ebebeb;
+    --muted: #777;
+    --muted2: #444;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 24px 0;
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #000 !important;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px !important;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+
+  .nav-cta:hover { background: #1fffc0 !important; transform: translateY(-1px); }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+
+  .page-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .page-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .page-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 52px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .page-title span { color: var(--accent); }
+
+  .page-intro {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .content-section { margin-bottom: 56px; }
+
+  .content-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 36px;
+  }
+
+  .content-block p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 16px;
+  }
+
+  .content-block p:last-child { margin-bottom: 0; }
+
+  .content-block strong { color: var(--text); font-weight: 500; }
+
+  .content-block a { color: var(--accent); text-decoration: none; }
+  .content-block a:hover { text-decoration: underline; }
+
+  .content-block ul {
+    list-style: none;
+    margin: 12px 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .content-block ul li {
+    font-size: 14px;
+    color: var(--muted);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .content-block ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .content-block ul.not-list li::before {
+    content: '✕';
+    color: var(--muted2);
+    font-size: 11px;
+  }
+
+  .contact-block {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 56px;
+  }
+
+  .contact-block p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .contact-block p:last-child { margin-bottom: 0; }
+
+  .contact-block a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .contact-block a:hover { text-decoration: underline; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    font-size: 13px;
+    color: var(--muted2);
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .footer-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .footer-brand span { color: var(--accent); }
+
+  .footer-location {
+    font-size: 12px;
+    color: var(--muted2);
+    margin-top: 4px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  .footer-links a.active { color: var(--accent); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer-email a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-email a:hover { color: var(--text); }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 20;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 640px) {
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      flex-direction: column;
+      gap: 4px;
+      margin: 8px 24px 0;
+      z-index: 100;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 10px 12px; border-radius: 8px; font-size: 14px; }
+    .nav-links a:hover { background: var(--surface2); }
+    .nav-cta { text-align: center; margin-top: 4px; }
+    nav { position: relative; flex-wrap: wrap; }
+    .content-block { padding: 24px 22px; }
+    .footer-top { flex-direction: column; gap: 16px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Sheet<span>Fix</span></a>
+  <ul class="nav-links">
+    <li><a href="how-it-works.html">How it works</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="get-started.html" class="nav-cta">Get started</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="wrap">
+
+  <p class="page-eyebrow">Terms & Scope</p>
+  <h1 class="page-title">What SheetFix does<br><span>and doesn't do.</span></h1>
+  <p class="page-intro">This isn't a legal document. It's a plain explanation of what the service covers, how pricing works, and what to expect.</p>
+
+  <!-- What SheetFix does -->
+  <section class="content-section">
+    <div class="section-label">What SheetFix does</div>
+    <div class="content-block">
+      <p>SheetFix fixes, cleans up, rebuilds, simplifies, and improves spreadsheets for small businesses, sole traders, and anyone who relies on Excel or Google Sheets to run part of their operation.</p>
+      <p>That includes things like fixing broken formulas, tidying messy layouts, rebuilding inherited spreadsheets, creating new sheets from a brief, adding structure and documentation, and making files easier to use and maintain.</p>
+    </div>
+  </section>
+
+  <!-- What SheetFix does not do -->
+  <section class="content-section">
+    <div class="section-label">What SheetFix does not do</div>
+    <div class="content-block">
+      <p>SheetFix is a spreadsheet service. There are some things that sit outside what it covers:</p>
+      <ul class="not-list">
+        <li>Complex database systems or enterprise software</li>
+        <li>Full software development or app builds</li>
+        <li>Complex API integrations</li>
+        <li>Ongoing managed spreadsheet services (a subscription option may be added later)</li>
+        <li>Accounting, tax, legal, or compliance advice</li>
+      </ul>
+      <p>If what you need turns out to be bigger than a spreadsheet job, SheetFix will tell you honestly — including if a different type of service would be a better fit.</p>
+    </div>
+  </section>
+
+  <!-- Pricing and scope -->
+  <section class="content-section">
+    <div class="section-label">Pricing and scope</div>
+    <div class="content-block">
+      <p>SheetFix uses fixed price tiers to keep things simple. Prices are based on the visible complexity of the job — number of tabs, formula logic, whether dashboards or branding are involved.</p>
+      <p>If a spreadsheet turns out to be more complex than it first appeared, SheetFix will confirm the updated scope and price before continuing. No extra work is completed without agreement.</p>
+      <p>See the full pricing breakdown on the <a href="pricing.html">Pricing page</a>.</p>
+    </div>
+  </section>
+
+  <!-- Customer responsibility -->
+  <section class="content-section">
+    <div class="section-label">Customer responsibility</div>
+    <div class="content-block">
+      <p>The customer is responsible for checking that the finished spreadsheet suits their business needs before relying on it. SheetFix will deliver a clean, working file with documentation — but the customer knows their business better than anyone.</p>
+      <p>Customers are also responsible for the accuracy of any data they provide. SheetFix works with the information given and does not verify business figures, pricing, or financial data.</p>
+    </div>
+  </section>
+
+  <!-- Revisions -->
+  <section class="content-section">
+    <div class="section-label">Revisions</div>
+    <div class="content-block">
+      <p>Each completed job includes reasonable clarification and minor tidy-up after delivery. If something isn't working as expected or a label needs adjusting, that's covered.</p>
+      <p>Larger changes, new features, or a change in direction may be quoted separately. SheetFix will always confirm before starting additional work.</p>
+    </div>
+  </section>
+
+  <!-- Refunds and cancellations -->
+  <section class="content-section">
+    <div class="section-label">Refunds and cancellations</div>
+    <div class="content-block">
+      <p>If work has not started, cancellation can be discussed and a refund arranged.</p>
+      <p>Once work has started or been completed, refunds are not guaranteed. If SheetFix cannot complete the job for any reason, the customer will be told and a fair next step will be agreed.</p>
+    </div>
+  </section>
+
+  <!-- No professional advice -->
+  <section class="content-section">
+    <div class="section-label">Not professional advice</div>
+    <div class="content-block">
+      <p>SheetFix improves spreadsheets — structure, formulas, usability, layout, and documentation. It does not replace a qualified accountant, bookkeeper, lawyer, tax adviser, or other professional.</p>
+      <p>If a spreadsheet is used for financial reporting, tax calculations, compliance tracking, or similar purposes, the customer should have a qualified professional review the output before relying on it.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div class="contact-block">
+    <p><strong>Not sure if something is in scope?</strong></p>
+    <p>Fill in the free brief on the <a href="get-started.html">Get Started page</a> and the analysis will indicate which tier fits. Or email SheetFix directly to ask.</p>
+    <p><a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Sheet<span>Fix</span></div>
+      <div class="footer-location">Wellington, New Zealand</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="privacy.html">Privacy & Data Handling</a></li>
+      <li><a href="terms.html" class="active">Terms & Scope</a></li>
+      <li><a href="get-started.html">Get started</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 SheetFix</span>
+    <span class="footer-email"><a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

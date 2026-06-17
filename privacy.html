@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="canonical" href="https://sheetfix.co.nz/privacy.html" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How SheetFix handles your files and information. Plain English — no legal jargon.">
+<meta property="og:title" content="Privacy & Data Handling — SheetFix">
+<meta property="og:description" content="How SheetFix handles your files and information. Plain English — no legal jargon.">
+<meta property="og:url" content="https://sheetfix.co.nz/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://sheetfix.co.nz/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy & Data Handling — SheetFix">
+<meta name="twitter:description" content="How SheetFix handles your files and information. Plain English — no legal jargon.">
+<meta name="twitter:image" content="https://sheetfix.co.nz/og-image.png">
+<title>Privacy & Data Handling — SheetFix</title>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1a1a1a;
+    --border: #242424;
+    --border-hover: #333;
+    --accent: #00e5a0;
+    --accent-dim: rgba(0,229,160,0.08);
+    --accent-border: rgba(0,229,160,0.22);
+    --text: #ebebeb;
+    --muted: #777;
+    --muted2: #444;
+    --warn-bg: rgba(255,180,0,0.07);
+    --warn-border: rgba(255,180,0,0.25);
+    --warn-text: #e8b84b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 24px 0;
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #000 !important;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px !important;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+
+  .nav-cta:hover { background: #1fffc0 !important; transform: translateY(-1px); }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+
+  .page-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .page-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .page-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 52px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .page-title span { color: var(--accent); }
+
+  .page-intro {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .content-section {
+    margin-bottom: 56px;
+  }
+
+  .content-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 36px;
+  }
+
+  .content-block p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 16px;
+  }
+
+  .content-block p:last-child { margin-bottom: 0; }
+
+  .content-block strong { color: var(--text); font-weight: 500; }
+
+  .content-block ul {
+    list-style: none;
+    margin: 12px 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .content-block ul li {
+    font-size: 14px;
+    color: var(--muted);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .content-block ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* Warning block */
+  .warn-block {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 56px;
+  }
+
+  .warn-block .warn-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warn-text);
+    margin-bottom: 10px;
+  }
+
+  .warn-block p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .warn-block strong { color: var(--warn-text); font-weight: 500; }
+
+  /* Contact block */
+  .contact-block {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 56px;
+  }
+
+  .contact-block p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .contact-block p:last-child { margin-bottom: 0; }
+
+  .contact-block a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .contact-block a:hover { text-decoration: underline; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    font-size: 13px;
+    color: var(--muted2);
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .footer-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .footer-brand span { color: var(--accent); }
+
+  .footer-location {
+    font-size: 12px;
+    color: var(--muted2);
+    margin-top: 4px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  .footer-links a.active { color: var(--accent); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer-email a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-email a:hover { color: var(--text); }
+
+  /* Mobile nav */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 20;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 640px) {
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      flex-direction: column;
+      gap: 4px;
+      margin: 8px 24px 0;
+      z-index: 100;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 10px 12px; border-radius: 8px; font-size: 14px; }
+    .nav-links a:hover { background: var(--surface2); }
+    .nav-cta { text-align: center; margin-top: 4px; }
+    nav { position: relative; flex-wrap: wrap; }
+    .content-block { padding: 24px 22px; }
+    .footer-top { flex-direction: column; gap: 16px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Sheet<span>Fix</span></a>
+  <ul class="nav-links">
+    <li><a href="how-it-works.html">How it works</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="get-started.html" class="nav-cta">Get started</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="wrap">
+
+  <p class="page-eyebrow">Privacy & Data Handling</p>
+  <h1 class="page-title">How SheetFix handles<br><span>your information.</span></h1>
+  <p class="page-intro">Plain English, no legal jargon. If you're handing over a spreadsheet that contains business information, here's exactly what happens to it.</p>
+
+  <!-- Warning block up top -->
+  <div class="warn-block">
+    <div class="warn-label">⚠ Important — before you submit</div>
+    <p><strong>Do not submit confidential, private, payroll, customer, pricing, or commercially sensitive information through the free brief form.</strong> The brief form uses AI to analyse the description you type — your spreadsheet file is not required at that stage. If your sheet contains sensitive data, describe the issue in general terms or use dummy examples. If you're unsure, email SheetFix first and ask.</p>
+  </div>
+
+  <!-- What SheetFix collects -->
+  <section class="content-section">
+    <div class="section-label">What SheetFix collects</div>
+    <div class="content-block">
+      <p>When you use SheetFix, the following information may be collected:</p>
+      <ul>
+        <li>Your name and email address</li>
+        <li>Your business name, if you provide it</li>
+        <li>A description of your spreadsheet issue, as entered in the brief form</li>
+        <li>Your spreadsheet file, if you choose to send it as part of a paid job</li>
+        <li>Any information contained inside that spreadsheet file</li>
+      </ul>
+      <p>The brief form does not require you to upload a file. Your spreadsheet is only needed once a job has been agreed and you're ready to proceed.</p>
+    </div>
+  </section>
+
+  <!-- How files are used -->
+  <section class="content-section">
+    <div class="section-label">How your file is used</div>
+    <div class="content-block">
+      <p>Your spreadsheet file is used for one purpose: to complete the job you've asked for.</p>
+      <ul>
+        <li>Files are not sold, shared with third parties, or reused for other clients</li>
+        <li>Files are not turned into templates or used as examples without your permission</li>
+        <li>Client data is not used for marketing</li>
+        <li>Your files are not used to train AI models by SheetFix</li>
+        <li>Files are only reviewed to understand, fix, rebuild, or improve your spreadsheet</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- AI use -->
+  <section class="content-section">
+    <div class="section-label">How AI is used</div>
+    <div class="content-block">
+      <p>The free brief on the Get Started page uses AI to review the written description you provide. <strong>Your spreadsheet file is not involved at this stage.</strong></p>
+      <p>Because the brief form passes your typed description to an AI tool, you should not enter confidential, private, payroll, customer, pricing, or commercially sensitive information into it. If your spreadsheet contains sensitive data, describe the issue in general terms — for example, "a payroll sheet with formula errors" rather than pasting actual figures or names.</p>
+      <p>Where AI tools are used to support analysis, formula work, structure, or documentation during a paid job, SheetFix checks the output before sending anything back to you. The finished spreadsheet is reviewed before delivery.</p>
+    </div>
+  </section>
+
+  <!-- File retention -->
+  <section class="content-section">
+    <div class="section-label">File retention and deletion</div>
+    <div class="content-block">
+      <p>Files are kept only as long as reasonably needed — to complete the job, answer any follow-up questions, and meet basic business and admin requirements.</p>
+      <p>If you'd like your files deleted, email <a href="mailto:sheetfix.nz@gmail.com" style="color:var(--accent);text-decoration:none;">sheetfix.nz@gmail.com</a> and SheetFix will remove them.</p>
+    </div>
+  </section>
+
+  <!-- Third-party tools -->
+  <section class="content-section">
+    <div class="section-label">Third-party tools</div>
+    <div class="content-block">
+      <p>SheetFix uses common business tools to operate — including email, cloud storage, spreadsheet software, website forms, and AI tools. These are standard tools used by most small businesses and service providers.</p>
+      <p>SheetFix does not sell or share your information with third parties for marketing purposes.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div class="contact-block">
+    <p><strong>Questions about how your file will be handled?</strong></p>
+    <p>Email SheetFix before sending your spreadsheet. I'm happy to explain what will happen with your file and confirm the safest next step for your situation.</p>
+    <p><a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Sheet<span>Fix</span></div>
+      <div class="footer-location">Wellington, New Zealand</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="privacy.html" class="active">Privacy & Data Handling</a></li>
+      <li><a href="terms.html">Terms & Scope</a></li>
+      <li><a href="get-started.html">Get started</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 SheetFix</span>
+    <span class="footer-email"><a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
