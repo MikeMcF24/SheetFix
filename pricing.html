@@ -565,17 +565,69 @@
     padding: 32px 24px;
     max-width: 720px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    font-size: 13px;
+    color: var(--muted2);
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .footer-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .footer-brand span { color: var(--accent); }
+
+  .footer-location {
+    font-size: 12px;
+    color: var(--muted2);
+    margin-top: 4px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 13px;
-    color: var(--muted2);
-    position: relative;
-    z-index: 1;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
-  footer a { color: var(--muted); text-decoration: none; }
-  footer a:hover { color: var(--text); }
+  .footer-email a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-email a:hover { color: var(--text); }
 
   @media (max-width: 640px) {
     .pricing-grid, .coming-grid { grid-template-columns: 1fr; }
@@ -585,7 +637,8 @@
     .factor-item { grid-template-columns: 1fr; gap: 4px; }
     .calc-card { padding: 26px 22px; }
     .cta-block { padding: 32px 22px; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .footer-top { flex-direction: column; gap: 16px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
   }
 
   /* ── Mobile nav ── */
@@ -824,23 +877,23 @@
 
 </div>
 
-<footer style="border-top:1px solid var(--border); padding:32px 24px; max-width:720px; margin:0 auto; position:relative; z-index:1; font-size:13px; color:var(--muted2);">
-  <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; margin-bottom:24px;">
+<footer>
+  <div class="footer-top">
     <div>
-      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:15px; color:var(--text); letter-spacing:-0.3px;">Sheet<span style="color:var(--accent);">Fix</span></div>
-      <div style="font-size:12px; color:var(--muted2); margin-top:4px;">Wellington, New Zealand</div>
+      <div class="footer-brand">Sheet<span>Fix</span></div>
+      <div class="footer-location">Wellington, New Zealand</div>
     </div>
-    <ul style="display:flex; flex-wrap:wrap; gap:8px 20px; list-style:none;">
-      <li><a href="pricing.html" style="color:var(--accent); text-decoration:none;">Pricing</a></li>
-      <li><a href="how-it-works.html" style="color:var(--muted); text-decoration:none;">How it works</a></li>
-      <li><a href="privacy.html" style="color:var(--muted); text-decoration:none;">Privacy & Data Handling</a></li>
-      <li><a href="terms.html" style="color:var(--muted); text-decoration:none;">Terms & Scope</a></li>
-      <li><a href="get-started.html" style="color:var(--muted); text-decoration:none;">Get started</a></li>
+    <ul class="footer-links">
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="privacy.html">Privacy &amp; Data Handling</a></li>
+      <li><a href="terms.html">Terms &amp; Scope</a></li>
+      <li><a href="get-started.html">Get started</a></li>
     </ul>
   </div>
-  <div style="border-top:1px solid var(--border); padding-top:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+  <div class="footer-bottom">
     <span>© 2026 SheetFix</span>
-    <span><a href="mailto:sheetfix.nz@gmail.com" style="color:var(--muted); text-decoration:none;">sheetfix.nz@gmail.com</a></span>
+    <span class="footer-email"><a href="mailto:sheetfix.nz@gmail.com">sheetfix.nz@gmail.com</a></span>
   </div>
 </footer>
 
