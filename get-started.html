@@ -258,7 +258,12 @@
     box-shadow: 0 0 0 3px rgba(0,229,160,0.15);
   }
 
-  input::placeholder, textarea::placeholder { color: #aaaaaa; }
+  input::placeholder, textarea::placeholder {
+    color: #aaaaaa;
+    font-style: italic;
+    transform: skewX(-3deg);
+    display: inline-block;
+  }
 
   textarea {
     resize: vertical;
