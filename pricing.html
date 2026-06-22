@@ -105,6 +105,38 @@
 
   .nav-cta:hover { background: #1fffc0 !important; transform: translateY(-1px); }
 
+  .promo-banner {
+    display: none;
+    position: relative;
+    z-index: 20;
+    background: var(--accent);
+    color: #000;
+    text-align: center;
+    padding: 12px 24px;
+  }
+
+  .promo-banner-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .price-amount .old-price {
+    text-decoration: line-through;
+    color: var(--muted);
+    font-size: 0.5em;
+    font-weight: 400;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 480px) {
+    .promo-banner-inner { font-size: 13px; }
+  }
+
   .wrap {
     position: relative;
     z-index: 1;
@@ -694,6 +726,10 @@
 </head>
 <body>
 
+<div class="promo-banner" id="promoBanner">
+  <div class="promo-banner-inner">🏗️ Builders Facebook group special — 50% off, first 10 spots only</div>
+</div>
+
 <nav>
   <a href="/" class="nav-logo">Sheet<span>Fix</span></a>
   <ul class="nav-links">
@@ -766,7 +802,7 @@
         <div class="price-tier">Simple</div>
         <h3>Quick Fix</h3>
         <div class="price-desc">One tab, clear problem, straightforward solution.</div>
-        <div class="price-amount">$149</div>
+        <div class="price-amount" data-price="149">$149</div>
         <div class="price-period">NZD · incl GST</div>
         <div class="price-divider"></div>
         <ul class="price-list">
@@ -784,7 +820,7 @@
         <div class="price-tier">Standard</div>
         <h3>Full Fix or Build</h3>
         <div class="price-desc">Multi-tab, moderate complexity, logic sorted.</div>
-        <div class="price-amount">$299</div>
+        <div class="price-amount" data-price="299">$299</div>
         <div class="price-period">NZD · incl GST</div>
         <div class="price-divider"></div>
         <ul class="price-list">
@@ -802,7 +838,7 @@
         <div class="price-tier">Advanced</div>
         <h3>Full Build + Brand</h3>
         <div class="price-desc">Complex systems, dashboards, full branding.</div>
-        <div class="price-amount">$499</div>
+        <div class="price-amount" data-price="499">$499</div>
         <div class="price-period">NZD · incl GST</div>
         <div class="price-divider"></div>
         <ul class="price-list">
@@ -930,6 +966,21 @@
   document.getElementById('hourlyRate').addEventListener('input', update);
   document.getElementById('hoursPerWeek').addEventListener('input', update);
   update();
+</script>
+
+<script>
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('fb') !== 'builders') return;
+
+    document.getElementById('promoBanner').style.display = 'block';
+
+    document.querySelectorAll('.price-amount[data-price]').forEach(function(el) {
+      var original = parseInt(el.getAttribute('data-price'), 10);
+      var discounted = Math.round(original / 2);
+      el.innerHTML = '<span class="old-price">$' + original + '</span>$' + discounted;
+    });
+  })();
 </script>
 
 </body>
