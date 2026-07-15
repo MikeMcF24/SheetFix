@@ -486,6 +486,65 @@
 
   .bookkeepers-block a:hover { text-decoration: underline; }
 
+  /* ── Builders section ── */
+  .builders-section { margin-bottom: 80px; }
+
+  .builders-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 36px;
+  }
+
+  .builders-block h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: -0.4px;
+  }
+
+  .builders-block p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 16px;
+  }
+
+  .builders-block ul {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+  }
+
+  .builders-block li {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .builders-block li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .builders-block li strong { color: var(--text); }
+
+  .builders-block p:last-child { margin-bottom: 0; }
+
+  .builders-block a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .builders-block a:hover { text-decoration: underline; }
+
   /* ── Fun line ── */
   .fun-line {
     text-align: center;
@@ -877,6 +936,24 @@
       <p>Some client spreadsheets have been patched together over years. They sort of work, but they take too long, create errors, or make monthly reporting harder than it needs to be.</p>
       <p>SheetFix can clean up the file, simplify the structure, fix formulas, and hand it back with plain-English instructions so your client actually understands how to use it.</p>
       <p>If a spreadsheet is causing repeated problems for you or your client, <a href="get-started.html">submit a brief</a> or <a href="mailto:sheetfix.nz@gmail.com">email SheetFix</a> to discuss.</p>
+    </div>
+  </section>
+
+  <!-- Building companies -->
+  <section class="builders-section">
+    <div class="section-label">For building companies</div>
+    <div class="builders-block">
+      <h3>Growing faster than your spreadsheets can keep up?</h3>
+      <p>Most building companies run on a patchwork of sheets — one for quoting, one for job costing, one that only one person understands. It works, until it doesn't.</p>
+      <p>SheetFix builds the trackers and tools that keep a growing building company on top of the numbers:</p>
+      <ul>
+        <li><strong>Job costing tracker</strong> — see quoted vs actual on every job, so you know where the margin's actually going</li>
+        <li><strong>Quoting calculator</strong> — labour, materials, overheads and margin, built in — no more guessing</li>
+        <li><strong>Subcontractor register</strong> — rates, insurance, licence expiry, all in one place</li>
+        <li><strong>Cash flow forecaster</strong> — claims, retentions, wages and supplier payments, mapped out weeks ahead</li>
+        <li><strong>Tender scorecard</strong> — stop burning hours pricing jobs you were never going to win</li>
+      </ul>
+      <p>If it's a spreadsheet problem, SheetFix can fix it or build it — <a href="get-started.html">submit a brief</a> or <a href="mailto:sheetfix.nz@gmail.com">email SheetFix</a> to talk through what you need.</p>
     </div>
   </section>
 
