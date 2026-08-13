@@ -193,6 +193,30 @@
     padding: 36px 36px;
   }
 
+  .story-intro {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 18px;
+  }
+
+  .story-photo {
+    flex-shrink: 0;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-dim);
+  }
+
+  .story-intro p { margin-bottom: 0 !important; }
+
+  @media (max-width: 600px) {
+    .story-intro { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .story-photo { width: 88px; height: 88px; }
+  }
+
   .story-block p {
     font-size: 15px;
     color: var(--text);
@@ -538,7 +562,10 @@
   <section class="story-section">
     <div class="section-label">Where this came from</div>
     <div class="story-block">
-      <p>I'm Mike, based in Wellington, and I build and fix spreadsheets for small businesses, sole traders, and anyone who has inherited a sheet they don't fully understand.</p>
+      <div class="story-intro">
+        <img src="mike-photo.jpg" alt="Mike, founder of SheetFix" class="story-photo">
+        <p>I'm Mike, based in Wellington, and I build and fix spreadsheets for small businesses, sole traders, and anyone who has inherited a sheet they don't fully understand.</p>
+      </div>
       <p>I've worked alongside businesses and trade organisations long enough to see the same pattern repeat. A spreadsheet starts simple, gets added to over time, and slowly becomes something nobody fully understands, even though the business still depends on it.</p>
       <p>Other times, the sheet is not broken. The person using it knows what they need, but does not have the time, confidence, or spreadsheet knowledge to fix it, improve it, or build on it properly.</p>
       <p>SheetFix is also for people who do not have a spreadsheet yet, just a problem, a rough idea, or a gap in how their business works.</p>
