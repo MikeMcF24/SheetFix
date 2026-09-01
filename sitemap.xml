@@ -30,4 +30,14 @@
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://sheetfix.co.nz/privacy.html</loc>
+    <priority>0.3</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sheetfix.co.nz/terms.html</loc>
+    <priority>0.3</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
