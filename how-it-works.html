@@ -117,68 +117,6 @@
 
   .nav-cta:hover { background: #1fffc0 !important; transform: translateY(-1px); }
 
-  .nav-hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 36px;
-    height: 36px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    z-index: 20;
-  }
-
-  .nav-hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-    transition: transform 0.25s, opacity 0.25s;
-  }
-
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  @media (max-width: 600px) {
-    .nav-hamburger { display: flex; }
-
-    .nav-links {
-      display: none !important;
-      flex-direction: column;
-      gap: 0;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 24px 20px;
-      z-index: 15;
-    }
-
-    .nav-links.open { display: flex !important; }
-
-    .nav-links li { border-bottom: 1px solid var(--border); }
-    .nav-links li:last-child { border-bottom: none; }
-
-    .nav-links a {
-      display: block;
-      padding: 14px 0;
-      font-size: 15px;
-    }
-
-    .nav-cta {
-      margin-top: 8px;
-      display: inline-block;
-      padding: 10px 20px !important;
-    }
-  }
-
   .wrap {
     position: relative;
     z-index: 1;
@@ -837,7 +775,7 @@
       </div>
       <div class="step-content">
         <h3>SheetFix builds and delivers</h3>
-        <p>Once you confirm, SheetFix sends an invoice for the agreed tier. Work starts when payment clears — your finished spreadsheet is delivered by email within 2–3 business days.</p>
+        <p>Once you confirm, SheetFix sends an invoice for the agreed tier and gets to work. Your finished spreadsheet is delivered by email within 2–3 business days.</p>
         <p>Every file includes a Start Here tab, colour-coded inputs, and clean logic. Reasonable clarification and minor tidy-up after delivery are included — if something needs tweaking, it gets sorted.</p>
       </div>
     </div>
@@ -865,7 +803,7 @@
 
     <div class="faq-item">
       <div class="faq-q">How long does it take?</div>
-      <div class="faq-a">The free analysis is instant — you get it within seconds of submitting. Turnaround on the finished spreadsheet is 2–3 business days from when payment is received.</div>
+      <div class="faq-a">The free analysis is instant. You get it within seconds of submitting. Turnaround on the finished spreadsheet is 2–3 business days from when the invoice is sent.</div>
     </div>
 
     <div class="faq-item">
