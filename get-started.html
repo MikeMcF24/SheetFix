@@ -9,14 +9,6 @@
   gtag('js', new Date());
   gtag('config', 'AW-18252034176');
 </script>
-<!-- Event snippet for Submit lead form conversion page -->
-<script>
-  gtag('event', 'conversion', {
-    'send_to': 'AW-18252034176/KMPNCMq6x8EcEIDhn_9D',
-    'value': 1.0,
-    'currency': 'NZD'
-  });
-</script>
 <link rel="canonical" href="https://sheetfix.co.nz/get-started.html" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1157,7 +1149,7 @@
     document.getElementById(countId).textContent = el.value.length;
   }
 
-  const REQUIRED = ['name', 'email', 'purpose', 'problems'];
+  const REQUIRED = ['name', 'email', 'purpose', 'problems', 'success'];
   const LABELS = ['Getting started', 'Coming along', 'Nearly there', 'Ready to go', 'All done'];
 
   function trackProgress() {
@@ -1379,6 +1371,13 @@ Calibrate language to their comfort level — simple for beginners, technical fo
     document.getElementById('confirmBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
     sendToFormspree(currentFormData, currentReport, 'confirmed');
     sendClientEmail(currentFormData, currentReport);
+
+    // Google Ads conversion — fires only on a genuine confirmed brief
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18252034176/KMPNCMq6x8EcEIDhn_9D',
+      'value': 1.0,
+      'currency': 'NZD'
+    });
 
     // Show send file box only for fix jobs
     if (currentFormData && currentFormData.path === 'Fix an existing spreadsheet') {
