@@ -1371,13 +1371,7 @@ Calibrate language to their comfort level — simple for beginners, technical fo
     document.getElementById('confirmBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
     sendToFormspree(currentFormData, currentReport, 'confirmed');
     sendClientEmail(currentFormData, currentReport);
-
-    // Google Ads conversion — fires only on a genuine confirmed brief
-    gtag('event', 'conversion', {
-      'send_to': 'AW-18252034176/KMPNCMq6x8EcEIDhn_9D',
-      'value': 1.0,
-      'currency': 'NZD'
-    });
+    gtag('event', 'conversion', {'send_to': 'AW-18252034176/3sRuCOnPi4IdEIDhn_9D'});
 
     // Show send file box only for fix jobs
     if (currentFormData && currentFormData.path === 'Fix an existing spreadsheet') {
