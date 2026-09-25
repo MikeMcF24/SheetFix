@@ -196,6 +196,17 @@
   .sale-pitch p + p { margin-top: 10px; }
   .sale-pitch strong { color: var(--text); font-weight: 500; }
   .sale-pitch .sale-fine { font-size: 12px; color: var(--muted2); }
+  .sale-ends {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: var(--sale-ink) !important;
+    background: var(--sale);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
   @media (max-width: 640px) {
     .price-sticker { right: 12px; }
   }
@@ -790,7 +801,7 @@
 <body>
 
 <div class="sale-banner" role="note">
-  <div class="sale-banner-inner"><b>Launch pricing: 50% off every tier.</b> Same work, half the price.</div>
+  <div class="sale-banner-inner"><b>Launch sale: 50% off every tier until 31 October.</b> Same work, half the price.</div>
 </div>
 
 <nav>
@@ -861,10 +872,11 @@
     <div class="section-label">Three tiers, one flat price</div>
 
     <div class="sale-pitch sale-only">
+      <p class="sale-ends" id="saleEnds">Ends 31 October</p>
       <h3>Half price. Full job.</h3>
       <p>SheetFix is new and I want the first clients to be the ones telling others about it. So for now every tier is half price.</p>
       <p>You still get <strong>the same build, the same Start Here tab and up to two rounds of tweaks</strong>. The only thing that's smaller is the invoice.</p>
-      <p class="sale-fine">Launch pricing runs until the diary fills up. Prices shown are what you pay, NZD incl GST.</p>
+      <p class="sale-fine">Launch sale ends 31 October 2026. Prices shown are what you pay, NZD incl GST.</p>
     </div>
 
     <div class="pricing-grid">
@@ -1011,10 +1023,17 @@
 </footer>
 
 <script>
-  // LAUNCH SALE SWITCH: set to false to turn the 50% off off across this page
-  window.SALE_ON = true;
+  // LAUNCH SALE: runs until midnight 31 October 2026 NZ time, then switches off by itself.
+  // To end it early, change the line below to: window.SALE_ON = false;
+  var SALE_END = new Date('2026-11-01T00:00:00+13:00');
+  window.SALE_ON = new Date() < SALE_END;
   (function() {
     if (!window.SALE_ON) return;
+    var daysLeft = Math.ceil((SALE_END - new Date()) / 86400000);
+    var ends = document.getElementById('saleEnds');
+    if (ends) ends.textContent = daysLeft <= 1
+      ? 'Ends tonight, 31 October'
+      : 'Ends 31 October. ' + daysLeft + ' days to go';
     document.body.classList.add('sale-on');
     document.querySelectorAll('.price-amount[data-price]').forEach(function(el) {
       var full = parseInt(el.getAttribute('data-price'), 10);
@@ -1050,7 +1069,7 @@
       const price = window.SALE_ON ? Math.round(full / 2) : full;
       const days = Math.max(1, Math.ceil(price / (weekly / 5)));
       const priceText = window.SALE_ON
-        ? `<strong>$${price}</strong> on launch pricing (normally $${full})`
+        ? `<strong>$${price}</strong> in the launch sale (normally $${full})`
         : `<strong>$${price} incl GST</strong>`;
       tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. A SheetFix ${tierName} at ${priceText} pays for itself in <strong>${days} working day${days === 1 ? '' : 's'}</strong>.`;
     }
