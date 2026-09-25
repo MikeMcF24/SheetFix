@@ -909,7 +909,7 @@
 <body>
 
 <div class="sale-banner" role="note">
-  <div class="sale-banner-inner"><b>Launch pricing: 50% off every tier.</b> Same work, half the price. <a href="pricing.html">See prices</a></div>
+  <div class="sale-banner-inner"><b>Launch sale: 50% off every tier until 31 October.</b> Same work, half the price. <a href="pricing.html">See prices</a></div>
 </div>
 
 <nav style="position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;max-width:660px;margin:0 auto;padding:32px 24px 0;">
@@ -1181,17 +1181,18 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-  // LAUNCH SALE SWITCH: set to false to turn the 50% off off across this page,
-  // the AI analysis and the brief email
-  const SALE_ON = true;
+  // LAUNCH SALE: runs until midnight 31 October 2026 NZ time, then switches off by itself
+  // (banner, prices, AI analysis and brief email). To end it early: const SALE_ON = false;
+  const SALE_END = new Date('2026-11-01T00:00:00+13:00');
+  const SALE_ON = new Date() < SALE_END;
   const salePrice = full => SALE_ON ? Math.round(full / 2) : full;
   const tierPrice = full => SALE_ON
-    ? `$${salePrice(full)} incl GST on launch pricing, normally $${full}`
+    ? `$${salePrice(full)} incl GST in the launch sale until 31 October, normally $${full}`
     : `$${full} incl GST`;
 
   if (SALE_ON) {
     document.body.classList.add('sale-on');
-    document.getElementById('trustLead').textContent = 'Free analysis, then 50% off.';
+    document.getElementById('trustLead').textContent = 'Free analysis, then 50% off until 31 October.';
     document.getElementById('trustLeadRest').textContent = ' No commitment.';
     document.querySelectorAll('.trust-bar [data-price]').forEach(el => {
       const full = parseInt(el.dataset.price, 10);
@@ -1291,7 +1292,7 @@ TIER DEFINITIONS:
 
 COMPLEX job (staged delivery): Enterprise-level scope, cross-system data, or something that genuinely requires multiple weeks of build work across many phases. This is rare.
 
-If SIMPLE, STANDARD, or ADVANCED: Write a warm, direct analysis (250–300 words) in plain paragraphs — no bullet points, no markdown headers, no title, no labels. Address them by first name. Structure: (1) Show you've understood their specific situation — reference what they actually said. (2) The 2–3 most impactful improvements, with brief plain-language reasoning. (3) One natural sentence naming which SheetFix tier their job sits in (Quick Fix / Full Fix or Build / Full Build + Brand, using the prices in the tier definitions above) and what that includes — keep it factual, not salesy.${SALE_ON ? " SheetFix is running launch pricing at 50% off every tier, so give the launch price and mention the normal price once in the same sentence, for example: Full Fix or Build, which is $150 on launch pricing (normally $299)." : ""} If the job sits between tiers, name the lower tier and mention the upper tier as an upgrade option. (4) Close by confirming their brief has been received and that SheetFix will be in touch. Do NOT tell them to submit — they have already submitted. Do NOT suggest a call, meeting, or conversation.
+If SIMPLE, STANDARD, or ADVANCED: Write a warm, direct analysis (250–300 words) in plain paragraphs — no bullet points, no markdown headers, no title, no labels. Address them by first name. Structure: (1) Show you've understood their specific situation — reference what they actually said. (2) The 2–3 most impactful improvements, with brief plain-language reasoning. (3) One natural sentence naming which SheetFix tier their job sits in (Quick Fix / Full Fix or Build / Full Build + Brand, using the prices in the tier definitions above) and what that includes — keep it factual, not salesy.${SALE_ON ? " SheetFix is running a launch sale at 50% off every tier until 31 October, so give the sale price and mention the normal price once in the same sentence, for example: Full Fix or Build, which is $150 in the launch sale until 31 October (normally $299)." : ""} If the job sits between tiers, name the lower tier and mention the upper tier as an upgrade option. (4) Close by confirming their brief has been received and that SheetFix will be in touch. Do NOT tell them to submit — they have already submitted. Do NOT suggest a call, meeting, or conversation.
 
 If COMPLEX (staged): Be honest but encouraging. Acknowledge what they're trying to achieve and that it's a legitimate need. Explain clearly that what they've described is a staged build rather than a single delivery — a V1 can solve the most critical problem first (name what that is specifically), and further phases can follow. Mention that SheetFix will confirm scope and pricing after reviewing the brief. Be direct without being discouraging. Close by confirming their brief has been received and that SheetFix will be in touch. Do NOT tell them to submit — they have already submitted. Do NOT suggest a call or meeting. Never make the person feel dismissed.
 
@@ -1346,7 +1347,7 @@ Calibrate language to their comfort level — simple for beginners, technical fo
           extra: data.extra,
           ai_analysis: report,
           client_confirmed: status,
-          pricing: SALE_ON ? 'Launch pricing 50% off' : 'Standard pricing',
+          pricing: SALE_ON ? 'Launch sale 50% off (ends 31 Oct)' : 'Standard pricing',
           _subject: `${SALE_ON ? '[50% launch] ' : ''}SheetFix ✓ confirmed — ${data.name}${data.company ? ' (' + data.company + ')' : ''}`
         })
       });
