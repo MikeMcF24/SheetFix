@@ -113,17 +113,25 @@
 
   .nav-cta:hover { background: #1fffc0 !important; transform: translateY(-1px); }
 
-  .promo-banner {
+  /* ── Launch sale (switch: SALE_ON in the sale script at the bottom) ── */
+  :root { --sale: #ffb81c; --sale-ink: #0a0a0a; }
+  .sale-banner {
     display: none;
     position: relative;
     z-index: 20;
-    background: var(--accent);
-    color: #000;
+    background: var(--sale);
+    color: var(--sale-ink);
     text-align: center;
-    padding: 12px 24px;
+    padding: 12px 24px 14px;
   }
-
-  .promo-banner-inner {
+  .sale-banner::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 5px;
+    background: repeating-linear-gradient(-45deg, var(--sale-ink) 0 8px, var(--sale) 8px 16px);
+  }
+  .sale-banner-inner {
     max-width: 720px;
     margin: 0 auto;
     font-family: 'Syne', sans-serif;
@@ -131,18 +139,65 @@
     font-size: 14px;
     line-height: 1.4;
   }
+  .sale-banner-inner b { font-weight: 800; }
+  .sale-banner a { color: var(--sale-ink); text-underline-offset: 3px; }
+  body.sale-on .sale-banner { display: block; }
+  body.sale-on .sale-only { display: block; }
+  .sale-only { display: none; }
+  @media (max-width: 480px) { .sale-banner-inner { font-size: 13px; } }
 
-  .price-amount .old-price {
-    text-decoration: line-through;
+  .price-was {
+    font-size: 13px;
     color: var(--muted);
-    font-size: 0.5em;
-    font-weight: 400;
-    margin-right: 8px;
-    vertical-align: middle;
+    margin-bottom: 4px;
+    display: none;
   }
+  .price-was s {
+    text-decoration-color: var(--sale);
+    text-decoration-thickness: 2px;
+  }
+  body.sale-on .price-was { display: block; }
+  .price-sticker {
+    display: none;
+    position: absolute;
+    top: 18px; right: -8px;
+    background: var(--sale);
+    color: var(--sale-ink);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1;
+    padding: 7px 10px;
+    border-radius: 4px;
+    transform: rotate(4deg);
+    box-shadow: 0 3px 0 rgba(0,0,0,0.5);
+  }
+  body.sale-on .price-sticker { display: block; }
+  .price-card.featured .price-sticker { top: 22px; }
 
-  @media (max-width: 480px) {
-    .promo-banner-inner { font-size: 13px; }
+  .sale-pitch {
+    background: var(--surface);
+    border: 1px solid rgba(255,184,28,0.35);
+    border-left: 4px solid var(--sale);
+    border-radius: 12px;
+    padding: 24px 26px;
+    margin-bottom: 28px;
+  }
+  .sale-pitch h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .sale-pitch p { font-size: 14px; color: var(--muted); line-height: 1.75; }
+  .sale-pitch p + p { margin-top: 10px; }
+  .sale-pitch strong { color: var(--text); font-weight: 500; }
+  .sale-pitch .sale-fine { font-size: 12px; color: var(--muted2); }
+  @media (max-width: 640px) {
+    .price-sticker { right: 12px; }
   }
 
   .wrap {
@@ -734,8 +789,8 @@
 </head>
 <body>
 
-<div class="promo-banner" id="promoBanner">
-  <div class="promo-banner-inner">🏗️ Builders Facebook group special — 50% off, first 10 spots only</div>
+<div class="sale-banner" role="note">
+  <div class="sale-banner-inner"><b>Launch pricing: 50% off every tier.</b> Same work, half the price.</div>
 </div>
 
 <nav>
@@ -803,13 +858,23 @@
 
   <!-- Pricing tiers -->
   <section class="pricing-section">
-    <div class="section-label">Three tiers — one flat price</div>
+    <div class="section-label">Three tiers, one flat price</div>
+
+    <div class="sale-pitch sale-only">
+      <h3>Half price. Full job.</h3>
+      <p>SheetFix is new and I want the first clients to be the ones telling others about it. So for now every tier is half price.</p>
+      <p>You still get <strong>the same build, the same Start Here tab and up to two rounds of tweaks</strong>. The only thing that's smaller is the invoice.</p>
+      <p class="sale-fine">Launch pricing runs until the diary fills up. Prices shown are what you pay, NZD incl GST.</p>
+    </div>
+
     <div class="pricing-grid">
 
       <div class="price-card">
         <div class="price-tier">Simple</div>
         <h3>Quick Fix</h3>
         <div class="price-desc">One tab, clear problem, straightforward solution.</div>
+        <div class="price-sticker" aria-hidden="true">Save $74</div>
+        <div class="price-was">Normally <s>$149</s></div>
         <div class="price-amount" data-price="149">$149</div>
         <div class="price-period">NZD · incl GST</div>
         <div class="price-divider"></div>
@@ -828,6 +893,8 @@
         <div class="price-tier">Standard</div>
         <h3>Full Fix or Build</h3>
         <div class="price-desc">Multi-tab, moderate complexity, logic sorted.</div>
+        <div class="price-sticker" aria-hidden="true">Save $149</div>
+        <div class="price-was">Normally <s>$299</s></div>
         <div class="price-amount" data-price="299">$299</div>
         <div class="price-period">NZD · incl GST</div>
         <div class="price-divider"></div>
@@ -846,6 +913,8 @@
         <div class="price-tier">Advanced</div>
         <h3>Full Build + Brand</h3>
         <div class="price-desc">Complex systems, dashboards, full branding.</div>
+        <div class="price-sticker" aria-hidden="true">Save $249</div>
+        <div class="price-was">Normally <s>$499</s></div>
         <div class="price-amount" data-price="499">$499</div>
         <div class="price-period">NZD · incl GST</div>
         <div class="price-divider"></div>
@@ -942,6 +1011,19 @@
 </footer>
 
 <script>
+  // LAUNCH SALE SWITCH: set to false to turn the 50% off off across this page
+  window.SALE_ON = true;
+  (function() {
+    if (!window.SALE_ON) return;
+    document.body.classList.add('sale-on');
+    document.querySelectorAll('.price-amount[data-price]').forEach(function(el) {
+      var full = parseInt(el.getAttribute('data-price'), 10);
+      el.textContent = '$' + Math.round(full / 2);
+    });
+  })();
+</script>
+
+<script>
   function fmt(n) {
     return '$' + Math.round(n).toLocaleString('en-NZ');
   }
@@ -960,12 +1042,17 @@
     let tierMsg = '';
     if (weekly === 0) {
       tierMsg = 'Enter your hourly rate and hours above to see what your spreadsheet problem is really costing you.';
-    } else if (weekly < 150) {
-      tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. A SheetFix Quick Fix at <strong>$149 incl GST</strong> pays for itself in a single week.`;
-    } else if (weekly < 400) {
-      tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. A SheetFix Full Fix or Build at <strong>$299 incl GST</strong> pays for itself in under two weeks.`;
     } else {
-      tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. Even the Full Build + Brand at <strong>$499 incl GST</strong> pays for itself in just over a week.`;
+      let tierName, full;
+      if (weekly < 150) { tierName = 'Quick Fix'; full = 149; }
+      else if (weekly < 400) { tierName = 'Full Fix or Build'; full = 299; }
+      else { tierName = 'Full Build + Brand'; full = 499; }
+      const price = window.SALE_ON ? Math.round(full / 2) : full;
+      const days = Math.max(1, Math.ceil(price / (weekly / 5)));
+      const priceText = window.SALE_ON
+        ? `<strong>$${price}</strong> on launch pricing (normally $${full})`
+        : `<strong>$${price} incl GST</strong>`;
+      tierMsg = `At <strong>$${rate}/hr</strong>, spending <strong>${hours} hour${hours === 1 ? '' : 's'}</strong> a week on spreadsheet problems costs you <strong>${fmt(yearly)}</strong> a year. A SheetFix ${tierName} at ${priceText} pays for itself in <strong>${days} working day${days === 1 ? '' : 's'}</strong>.`;
     }
 
     document.getElementById('calcConclusion').innerHTML = tierMsg;
@@ -976,20 +1063,7 @@
   update();
 </script>
 
-<script>
-  (function() {
-    var params = new URLSearchParams(window.location.search);
-    if (params.get('fb') !== 'builders') return;
 
-    document.getElementById('promoBanner').style.display = 'block';
-
-    document.querySelectorAll('.price-amount[data-price]').forEach(function(el) {
-      var original = parseInt(el.getAttribute('data-price'), 10);
-      var discounted = Math.round(original / 2);
-      el.innerHTML = '<span class="old-price">$' + original + '</span>$' + discounted;
-    });
-  })();
-</script>
 
 </body>
 </html>

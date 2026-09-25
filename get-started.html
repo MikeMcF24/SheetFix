@@ -104,6 +104,39 @@
     border-radius: 20px;
   }
 
+  /* ── Launch sale (switch: SALE_ON in the sale script at the bottom) ── */
+  :root { --sale: #ffb81c; --sale-ink: #0a0a0a; }
+  .sale-banner {
+    display: none;
+    position: relative;
+    z-index: 20;
+    background: var(--sale);
+    color: var(--sale-ink);
+    text-align: center;
+    padding: 12px 24px 14px;
+  }
+  .sale-banner::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 5px;
+    background: repeating-linear-gradient(-45deg, var(--sale-ink) 0 8px, var(--sale) 8px 16px);
+  }
+  .sale-banner-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .sale-banner-inner b { font-weight: 800; }
+  .sale-banner a { color: var(--sale-ink); text-underline-offset: 3px; }
+  body.sale-on .sale-banner { display: block; }
+  body.sale-on .sale-only { display: block; }
+  .sale-only { display: none; }
+  @media (max-width: 480px) { .sale-banner-inner { font-size: 13px; } }
+
   /* ── Trust bar ── */
   .trust-bar {
     background: rgba(0,229,160,0.06);
@@ -122,6 +155,20 @@
     color: var(--accent);
     font-weight: 500;
   }
+
+  .trust-bar .was {
+    text-decoration: line-through;
+    text-decoration-color: var(--sale);
+    text-decoration-thickness: 2px;
+    color: var(--muted2);
+    margin-right: 4px;
+  }
+  .trust-bar .now { color: var(--text); font-weight: 500; }
+  body.sale-on .trust-bar {
+    background: rgba(255,184,28,0.07);
+    border-color: rgba(255,184,28,0.35);
+  }
+  body.sale-on .trust-bar strong { color: var(--sale); }
 
   /* ── Intro ── */
   .intro { margin-bottom: 44px; }
@@ -861,6 +908,10 @@
 </head>
 <body>
 
+<div class="sale-banner" role="note">
+  <div class="sale-banner-inner"><b>Launch pricing: 50% off every tier.</b> Same work, half the price. <a href="pricing.html">See prices</a></div>
+</div>
+
 <nav style="position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;max-width:660px;margin:0 auto;padding:32px 24px 0;">
   <a href="/" style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--text);text-decoration:none;letter-spacing:-0.5px;">Sheet<span style="color:var(--accent)">Fix</span></a>
   <ul class="nav-links">
@@ -883,7 +934,7 @@
   </div>
 
   <div class="trust-bar">
-    <strong>Free analysis included</strong> — no commitment needed. Quick Fix $149 · Full Fix or Build $299 · Full Build + Brand $499 (all incl GST).
+    <strong id="trustLead">Free analysis included</strong><span id="trustLeadRest">, no commitment needed.</span> Quick Fix <span data-price="149">$149</span> · Full Fix or Build <span data-price="299">$299</span> · Full Build + Brand <span data-price="499">$499</span> (all incl GST).
   </div>
 
   <div class="progress-wrap">
@@ -1130,6 +1181,24 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+  // LAUNCH SALE SWITCH: set to false to turn the 50% off off across this page,
+  // the AI analysis and the brief email
+  const SALE_ON = true;
+  const salePrice = full => SALE_ON ? Math.round(full / 2) : full;
+  const tierPrice = full => SALE_ON
+    ? `$${salePrice(full)} incl GST on launch pricing, normally $${full}`
+    : `$${full} incl GST`;
+
+  if (SALE_ON) {
+    document.body.classList.add('sale-on');
+    document.getElementById('trustLead').textContent = 'Free analysis, then 50% off.';
+    document.getElementById('trustLeadRest').textContent = ' No commitment.';
+    document.querySelectorAll('.trust-bar [data-price]').forEach(el => {
+      const full = parseInt(el.dataset.price, 10);
+      el.innerHTML = `<span class="was">$${full}</span><span class="now">$${salePrice(full)}</span>`;
+    });
+  }
+
   emailjs.init('lD6kHpJ2A5ZLDEG8A');
 
   const WORKER_URL = 'https://yellow-math-c9af.mikey-mcf.workers.dev/';
@@ -1216,13 +1285,13 @@ CLIENT:
 First, assess the complexity and pricing tier of the request:
 
 TIER DEFINITIONS:
-- Quick Fix ($149 incl GST): Single person, one or two tabs, clear problem, straightforward fix. One main thing wrong.
-- Full Fix or Build ($299 incl GST): Multiple tabs or linked sheets, moderate formula complexity, fix or build with logic and layout work. Most SheetFix jobs.
-- Full Build + Brand ($499 incl GST): Dashboards, charts, branding, multiple users or departments, complex automation, or a full custom build from scratch with significant scope.
+- Quick Fix (${tierPrice(149)}): Single person, one or two tabs, clear problem, straightforward fix. One main thing wrong.
+- Full Fix or Build (${tierPrice(299)}): Multiple tabs or linked sheets, moderate formula complexity, fix or build with logic and layout work. Most SheetFix jobs.
+- Full Build + Brand (${tierPrice(499)}): Dashboards, charts, branding, multiple users or departments, complex automation, or a full custom build from scratch with significant scope.
 
 COMPLEX job (staged delivery): Enterprise-level scope, cross-system data, or something that genuinely requires multiple weeks of build work across many phases. This is rare.
 
-If SIMPLE, STANDARD, or ADVANCED: Write a warm, direct analysis (250–300 words) in plain paragraphs — no bullet points, no markdown headers, no title, no labels. Address them by first name. Structure: (1) Show you've understood their specific situation — reference what they actually said. (2) The 2–3 most impactful improvements, with brief plain-language reasoning. (3) One natural sentence naming which SheetFix tier their job sits in (Quick Fix at $149 / Full Fix or Build at $299 / Full Build + Brand at $499, all incl GST) and what that includes — keep it factual, not salesy. If the job sits between tiers, name the lower tier and mention the upper tier as an upgrade option. (4) Close by confirming their brief has been received and that SheetFix will be in touch. Do NOT tell them to submit — they have already submitted. Do NOT suggest a call, meeting, or conversation.
+If SIMPLE, STANDARD, or ADVANCED: Write a warm, direct analysis (250–300 words) in plain paragraphs — no bullet points, no markdown headers, no title, no labels. Address them by first name. Structure: (1) Show you've understood their specific situation — reference what they actually said. (2) The 2–3 most impactful improvements, with brief plain-language reasoning. (3) One natural sentence naming which SheetFix tier their job sits in (Quick Fix / Full Fix or Build / Full Build + Brand, using the prices in the tier definitions above) and what that includes — keep it factual, not salesy.${SALE_ON ? " SheetFix is running launch pricing at 50% off every tier, so give the launch price and mention the normal price once in the same sentence, for example: Full Fix or Build, which is $150 on launch pricing (normally $299)." : ""} If the job sits between tiers, name the lower tier and mention the upper tier as an upgrade option. (4) Close by confirming their brief has been received and that SheetFix will be in touch. Do NOT tell them to submit — they have already submitted. Do NOT suggest a call, meeting, or conversation.
 
 If COMPLEX (staged): Be honest but encouraging. Acknowledge what they're trying to achieve and that it's a legitimate need. Explain clearly that what they've described is a staged build rather than a single delivery — a V1 can solve the most critical problem first (name what that is specifically), and further phases can follow. Mention that SheetFix will confirm scope and pricing after reviewing the brief. Be direct without being discouraging. Close by confirming their brief has been received and that SheetFix will be in touch. Do NOT tell them to submit — they have already submitted. Do NOT suggest a call or meeting. Never make the person feel dismissed.
 
@@ -1277,7 +1346,8 @@ Calibrate language to their comfort level — simple for beginners, technical fo
           extra: data.extra,
           ai_analysis: report,
           client_confirmed: status,
-          _subject: `SheetFix ✓ confirmed — ${data.name}${data.company ? ' (' + data.company + ')' : ''}`
+          pricing: SALE_ON ? 'Launch pricing 50% off' : 'Standard pricing',
+          _subject: `${SALE_ON ? '[50% launch] ' : ''}SheetFix ✓ confirmed — ${data.name}${data.company ? ' (' + data.company + ')' : ''}`
         })
       });
     } catch (_) {}
