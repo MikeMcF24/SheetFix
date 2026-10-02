@@ -857,9 +857,45 @@
     .footer-top { flex-direction: column; gap: 16px; }
     .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
   }
+  /* ── Launch sale (switch: SALE_ON in the sale script at the bottom) ── */
+  :root { --sale: #ffb81c; --sale-ink: #0a0a0a; }
+  .sale-banner {
+    display: none;
+    position: relative;
+    z-index: 20;
+    background: var(--sale);
+    color: var(--sale-ink);
+    text-align: center;
+    padding: 12px 24px 14px;
+  }
+  .sale-banner::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 5px;
+    background: repeating-linear-gradient(-45deg, var(--sale-ink) 0 8px, var(--sale) 8px 16px);
+  }
+  .sale-banner-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .sale-banner-inner b { font-weight: 800; }
+  .sale-banner a { color: var(--sale-ink); text-underline-offset: 3px; }
+  body.sale-on .sale-banner { display: block; }
+  body.sale-on .sale-only { display: block; }
+  .sale-only { display: none; }
+  @media (max-width: 480px) { .sale-banner-inner { font-size: 13px; } }
 </style>
 </head>
 <body>
+
+<div class="sale-banner" role="note">
+  <div class="sale-banner-inner"><b>Launch sale: 50% off every tier until 31 October.</b> Same work, half the price. <a href="pricing.html">See prices</a></div>
+</div>
 
 <nav style="position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;max-width:660px;margin:0 auto;padding:32px 24px 0;">
   <a href="/" style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--text);text-decoration:none;letter-spacing:-0.5px;">Sheet<span style="color:var(--accent)">Fix</span></a>
@@ -883,7 +919,7 @@
   </div>
 
   <div class="trust-bar">
-    <strong>Free analysis included</strong> — no commitment needed. Quick Fix $149 · Full Fix or Build $299 · Full Build + Brand $499 (all incl GST).
+    <strong>Free analysis included</strong> — no commitment needed. Quick Fix <span data-price="149">$149</span> · Full Fix or Build <span data-price="299">$299</span> · Full Build + Brand <span data-price="499">$499</span> (all incl GST).
   </div>
 
   <div class="progress-wrap">
@@ -1433,5 +1469,18 @@ Calibrate language to their comfort level — simple for beginners, technical fo
   });
 </script>
 
+<script>
+  // LAUNCH SALE: runs until midnight 31 October 2026 NZ time, then switches off by itself.
+  // To end it early, change the line below to: window.SALE_ON = false;
+  var SALE_END = new Date('2026-11-01T00:00:00+13:00');
+  window.SALE_ON = new Date() < SALE_END;
+  if (window.SALE_ON) {
+    document.body.classList.add('sale-on');
+    document.querySelectorAll('span[data-price]').forEach(function(el) {
+      var full = Number(el.getAttribute('data-price'));
+      el.innerHTML = '<s>$' + full + '</s> $' + Math.round(full / 2);
+    });
+  }
+</script>
 </body>
 </html>
